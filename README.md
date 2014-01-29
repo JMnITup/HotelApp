@@ -1,0 +1,4 @@
+HotelApp
+========
+
+Example application

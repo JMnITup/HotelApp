@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAccess.Tests", "RoomAcc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RoomAccess", "RoomAccess", "{0FCBC8D0-8F1D-424F-B873-B9F55DEBF11A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservingEngine.Services", "ReservingEngine\ReservingEngine.Services.csproj", "{D6465171-E0DE-4C24-AEAE-76F7A15359EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,14 @@ Global
 		{F2A61459-8524-4351-9E36-25F11F1D4A5D}.Dev|Any CPU.Build.0 = Debug|Any CPU
 		{F2A61459-8524-4351-9E36-25F11F1D4A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2A61459-8524-4351-9E36-25F11F1D4A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6465171-E0DE-4C24-AEAE-76F7A15359EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

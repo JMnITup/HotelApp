@@ -23,7 +23,6 @@ namespace WpfApplication1
         {
             InitializeComponent();
 
-            x_x 
         }
     }
 }

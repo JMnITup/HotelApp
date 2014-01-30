@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -7,7 +8,7 @@ using System.ServiceModel;
 
 namespace HotelCorp.HotelApp.Services.Access {
     [ServiceContract]
-    public interface IRoomAccess {
+    public interface IRoomAccess : IDisposable {
         [OperationContract]
         void GenerateBasicHotel(uint xSize, uint ySize, uint zSize);
 

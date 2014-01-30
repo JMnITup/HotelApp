@@ -15,7 +15,7 @@ namespace HotelCorp.HotelApp.Services.Access.Tests {
             IRoomAccess service = new RoomAccess();
             service.GenerateBasicHotel(2, 2, 2);
             var guest = new Guest(fname: "Some", lname: "Body");
-            string roomNumber = service.GetRoomNames()[4];
+            string roomNumber = service.GetRoomNumbers()[4];
 
             // Act
             service.AssignGuestToRoom(guest, roomNumber);
@@ -52,11 +52,11 @@ namespace HotelCorp.HotelApp.Services.Access.Tests {
             service.GenerateBasicHotel(2, 2, 2);
 
             var guest1 = new Guest(fname: "Some", lname: "Body");
-            string roomNumber1 = service.GetRoomNames()[4];
+            string roomNumber1 = service.GetRoomNumbers()[4];
             service.AssignGuestToRoom(guest1, roomNumber1);
 
             var guest2 = new Guest(fname: "Noone", lname: "Special");
-            string roomNumber2 = service.GetRoomNames()[3];
+            string roomNumber2 = service.GetRoomNumbers()[3];
             service.AssignGuestToRoom(guest2, roomNumber2);
 
             // Act
@@ -76,11 +76,11 @@ namespace HotelCorp.HotelApp.Services.Access.Tests {
             service.GenerateBasicHotel(2, 2, 2);
 
             var guest1 = new Guest(fname: "Some", lname: "Body");
-            string roomNumber1 = service.GetRoomNames()[4];
+            string roomNumber1 = service.GetRoomNumbers()[4];
             service.AssignGuestToRoom(guest1, roomNumber1);
 
             var guest2 = new Guest(fname: "Noone", lname: "Special");
-            string roomNumber2 = service.GetRoomNames()[3];
+            string roomNumber2 = service.GetRoomNumbers()[3];
             service.AssignGuestToRoom(guest2, roomNumber2);
 
             // Act

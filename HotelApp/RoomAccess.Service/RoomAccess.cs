@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Windows.Media.Media3D;
 
 #endregion
@@ -26,7 +27,7 @@ namespace HotelCorp.HotelApp.Services.Access {
             }
         }
 
-        public List<string> GetRoomNames() {
+        public List<string> GetRoomNumbers() {
             return HotelMap.ConvertAll(n => n.RoomNumber);
         }
 
@@ -43,6 +44,18 @@ namespace HotelCorp.HotelApp.Services.Access {
                 throw new Exception("Guest is not checked into room");
             }
             room.Guest = null;
+        }
+
+        public List<Guest> GetGuestList() {
+            return HotelMap.FindAll(room => room.Guest != null).ConvertAll(input => input.Guest);
+        }
+
+        public List<Room> GetAllEmptyRooms() {
+            return HotelMap.FindAll(room => room.Guest == null);
+        }
+
+        public List<Room> GetAllAssignedRooms() {
+            return HotelMap.FindAll(room => room.Guest != null);
         }
 
         protected bool IsSpecifiedGuestInRoom(Guest guest, Room room) {
@@ -84,9 +97,10 @@ namespace HotelCorp.HotelApp.Services.Access {
         }
     }
 
+    [DataContract]
     public class Guest {
-        public string FirstName;
-        public string LastName;
+        [DataMember] public string FirstName;
+        [DataMember] public string LastName;
 
         public Guest(string fname, string lname) {
             FirstName = fname;

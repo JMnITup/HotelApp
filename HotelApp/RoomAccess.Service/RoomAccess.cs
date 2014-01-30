@@ -10,18 +10,18 @@ using JamesMeyer.IocContainer;
 namespace HotelCorp.HotelApp.Services.Access {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RoomAccess" in both code and config file together.
     public class RoomAccess : IRoomAccess {
-        InterfaceResolver Ioc = new InterfaceResolver();
-
-        public RoomAccess() {
-        }
-
-        public RoomAccess(InterfaceResolver resolver) {
-            Ioc = resolver;
-        }
         /// <summary>
         ///     Represents an underlying data store.  This could be replaced with any store implementation
         /// </summary>
         public static List<Room> HotelMap = new List<Room>();
+
+        private InterfaceResolver Ioc = new InterfaceResolver();
+
+        public RoomAccess() {}
+
+        public RoomAccess(InterfaceResolver resolver) {
+            Ioc = resolver;
+        }
 
         public void GenerateBasicHotel(uint xSize, uint ySize, uint zSize) {
             HotelMap = new List<Room>();
@@ -96,11 +96,9 @@ namespace HotelCorp.HotelApp.Services.Access {
         #region Implementation of IDisposable
 
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose() {
-            
-        }
+        public void Dispose() {}
 
         #endregion
     }

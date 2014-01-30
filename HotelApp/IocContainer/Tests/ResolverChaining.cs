@@ -1,4 +1,4 @@
-﻿#region Using declarations
+﻿#region
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -20,7 +20,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.IsNotNull(chainedResolverClass);
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void ConstructChainedResolverClassWithoutResolver() {
@@ -32,7 +31,6 @@ namespace JamesMeyer.IocContainer.Tests {
             // Assert
             Assert.IsNotNull(chainedResolverClass);
         }
-
 
         [TestMethod]
         [TestCategory("Unit")]
@@ -47,7 +45,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.IsNotNull(newResolver);
             Assert.AreNotSame(chainedResolverClass, newResolver);
         }
-
 
         [TestMethod]
         [TestCategory("Unit")]
@@ -65,7 +62,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreNotSame(chainedResolverClass, newResolver);
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         [ExpectedException(typeof(RegistrationMissingException))]
@@ -81,7 +77,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.Fail("Exception expected");
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void ChainedResolverClassWithDefaultConstructorPropegatesResolverDownward() {
@@ -95,7 +90,6 @@ namespace JamesMeyer.IocContainer.Tests {
             // Assert
             Assert.AreSame(chainedResolverClass.GetResolver(), newResolver.GetResolver());
         }
-
 
         [TestMethod]
         [TestCategory("Unit")]
@@ -117,14 +111,10 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreSame(chainedResolverClass.GetResolver(), newResolver.GetResolver());
         }
 
-
-        /************************************************* Nested classes ***********************************************/
-
         #region Nested type: ChainedResolverClass
 
         public class ChainedResolverClass : IChainedResolverClass {
             protected readonly InterfaceResolver Resolver;
-
 
             public ChainedResolverClass(InterfaceResolver resolver) {
                 Resolver = resolver;
@@ -158,5 +148,7 @@ namespace JamesMeyer.IocContainer.Tests {
         }
 
         #endregion
+
+        /************************************************* Nested classes ***********************************************/
     }
 }

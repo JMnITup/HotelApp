@@ -1,4 +1,4 @@
-﻿#region Using declarations
+﻿#region
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -36,7 +36,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreEqual(0, m.GetFinalValue());
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void ResolveSameNamedRegistrationOnDifferentInterfacesWithNoDefinedConstructors() {
@@ -52,7 +51,6 @@ namespace JamesMeyer.IocContainer.Tests {
             // Assert
             Assert.AreEqual(0, m.GetFinalValue());
         }
-
 
         [TestMethod]
         [TestCategory("Unit")]
@@ -119,7 +117,6 @@ namespace JamesMeyer.IocContainer.Tests {
         }
          */
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void AnonymousNonSingletonDoNotResolveToSameObject() {
@@ -165,7 +162,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreSame(resolve1, resolve2);
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void AnonymousInstanceResolvesToProvidedObject() {
@@ -185,7 +181,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreEqual(55, resolve1.GetFinalValue());
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void RegisteringClassResolvesCorrectly() {
@@ -199,7 +194,6 @@ namespace JamesMeyer.IocContainer.Tests {
             // Assert
             Assert.AreEqual(typeof(ConcreteTypeWithNoDefinedConstructors), resolve.GetType());
         }
-
 
         [TestMethod]
         [TestCategory("Unit")]
@@ -231,7 +225,6 @@ namespace JamesMeyer.IocContainer.Tests {
             // Assert
             Assert.Fail("An exception was not thrown when it should have been");
         }
-
 
         [TestMethod]
         [TestCategory("Unit")]

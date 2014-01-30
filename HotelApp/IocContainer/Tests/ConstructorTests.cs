@@ -1,6 +1,5 @@
-﻿#region Using declarations
+﻿#region
 
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 #endregion
@@ -22,7 +21,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreEqual("default", instance.Value);
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void NonFirstConstructorWithMultipleArgumentsResolves() {
@@ -38,7 +36,6 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreEqual("string,int", instance.Value);
         }
 
-
         [TestMethod]
         [TestCategory("Unit")]
         public void UsesInterfaceResolverConstructorOverDefault() {
@@ -52,7 +49,6 @@ namespace JamesMeyer.IocContainer.Tests {
             // Assert
             Assert.AreEqual("InterfaceResolver", instance.Value);
         }
-
 
         [TestMethod]
         [TestCategory("Unit")]
@@ -70,15 +66,13 @@ namespace JamesMeyer.IocContainer.Tests {
             Assert.AreEqual("string,int(first)", instance.Value);
         }
 
-        
         [TestMethod]
         [TestCategory("Unit")]
         [ExpectedException(typeof(RegistrationMissingException))]
-        public void UnregisteredConstructorThrowsRegistrationException()
-        {
+        public void UnregisteredConstructorThrowsRegistrationException() {
             // Arrange
             var c = new InterfaceResolver();
-            c.Register<IConstructorTestClass, ConstructorTestClassOnlyDefault>().WithConstructor(new Type[] {typeof(string)}, new object[] {""});
+            c.Register<IConstructorTestClass, ConstructorTestClassOnlyDefault>().WithConstructor(new[] {typeof(string)}, new object[] {""});
 
             // Act
             var resolve = c.Resolve<IConstructorTestClass>();
@@ -86,8 +80,6 @@ namespace JamesMeyer.IocContainer.Tests {
             // Assert
             Assert.Fail("An exception was not thrown when it should have been");
         }
-
-        /************************************************* Nested classes ***********************************************/
 
         #region Nested type: ConstructorTestClassOnlyDefault
 
@@ -188,5 +180,7 @@ namespace JamesMeyer.IocContainer.Tests {
         }
 
         #endregion
+
+        /************************************************* Nested classes ***********************************************/
     }
 }

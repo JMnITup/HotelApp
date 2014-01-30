@@ -1,4 +1,8 @@
-﻿using System.Runtime.Serialization;
+﻿#region
+
+using System.Runtime.Serialization;
+
+#endregion
 
 namespace HotelCorp.HotelApp.Services.Access {
     [DataContract]

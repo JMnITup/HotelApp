@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.ServiceModel;
 using System.Threading;
-using Bridgepoint.Enterprise.Common.Logging;
 
 namespace ServiceModelEx
 {
@@ -15,12 +14,12 @@ namespace ServiceModelEx
    {
        /* Start BPE added - James Meyer 2013-11-15 */
 
-       public static Func<ILogger> GetLoggerInstance { get; set; }
+       //public static Func<ILogger> GetLoggerInstance { get; set; }
        public static Func<string, T[]> GetPersistentListFunction { get; set; }
        public static Func<string, T[]> GetTransientListFunction { get; set; }
 
        public PublishService() {
-           GetLoggerInstance = () => new Logger();
+           //GetLoggerInstance = () => new Logger();
            GetPersistentListFunction = SubscriptionManager<T>.GetPersistentList;
            GetTransientListFunction = SubscriptionManager<T>.GetTransientList;
        }
@@ -105,9 +104,9 @@ namespace ServiceModelEx
          {
             Trace.WriteLine(e.Message);
              /* Start BPE added - James Meyer 2013-11-15 */
-             if (GetLoggerInstance != null) {
-                 GetLoggerInstance.Invoke().LogException(e);
-             }
+             //if (GetLoggerInstance != null) {
+             //    GetLoggerInstance.Invoke().LogException(e);
+             //}
              /* End BPE added - James Meyer 2013-11-15 */
          }
       }

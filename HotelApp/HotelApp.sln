@@ -9,18 +9,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Documentation", ".Document
 		HotelApp - Use Case Activity Diagrams.vdw = HotelApp - Use Case Activity Diagrams.vdw
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Common", ".Common", "{0EAAA520-CE82-450D-85BB-3382E4E58FC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceModelEx", "ServiceModelEx\3.0.0.0\NoServiceBus\ServiceModelEx.csproj", "{0858C710-AF53-4049-B98E-CFE3638D1228}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Design|Any CPU = Design|Any CPU
+		Dev|Any CPU = Dev|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Dev|Any CPU.Build.0 = Debug|Any CPU
 		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C0B2662-964F-47A8-A3D6-5E067D38D013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Design|Any CPU.ActiveCfg = Design|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Design|Any CPU.Build.0 = Design|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0858C710-AF53-4049-B98E-CFE3638D1228} = {0EAAA520-CE82-450D-85BB-3382E4E58FC6}
 	EndGlobalSection
 EndGlobal

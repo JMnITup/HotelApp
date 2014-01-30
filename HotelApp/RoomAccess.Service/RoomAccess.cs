@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using System.Windows.Media.Media3D;
 
@@ -24,6 +25,52 @@ namespace HotelCorp.HotelApp.Services.Access {
                 }
             }
         }
+
+        public List<string> GetRoomNames() {
+            return HotelMap.ConvertAll(n => n.RoomNumber);
+        }
+
+        public void AssignGuestToRoom(Guest guest, string roomNumber) {
+            VerifyGuest(guest);
+            Room room = GetRoomByRoomNumber(roomNumber);
+            room.Guest = guest;
+        }
+
+        public void UnassignGuestFromRoom(Guest guest, string roomNumber) {
+            VerifyGuest(guest);
+            Room room = GetRoomByRoomNumber(roomNumber);
+            if (!IsSpecifiedGuestInRoom(guest, room)) {
+                throw new Exception("Guest is not checked into room");
+            }
+            room.Guest = null;
+        }
+
+        protected bool IsSpecifiedGuestInRoom(Guest guest, Room room) {
+            if (guest.FirstName == room.Guest.FirstName && guest.LastName == room.Guest.LastName) {
+                return true;
+            }
+            return false;
+        }
+
+        protected Room GetRoomByRoomNumber(string roomNumber) {
+            List<Room> rooms = HotelMap.FindAll(room => room.RoomNumber == roomNumber);
+            if (rooms.Count < 1) {
+                throw new Exception("Requested room does not exist");
+            }
+            if (rooms.Count > 1) {
+                throw new Exception("There are multiple rooms with that number, cannot proceed");
+            }
+            return rooms[0];
+        }
+
+        protected void VerifyGuest(Guest guest) {
+            if (guest == null) {
+                throw new Exception("No guest provided");
+            }
+            if (guest.FirstName.Trim() == "" && guest.LastName.Trim() == "") {
+                throw new Exception("Guests must have a name");
+            }
+        }
     }
 
     public class Room {
@@ -40,5 +87,10 @@ namespace HotelCorp.HotelApp.Services.Access {
     public class Guest {
         public string FirstName;
         public string LastName;
+
+        public Guest(string fname, string lname) {
+            FirstName = fname;
+            LastName = lname;
+        }
     }
 }

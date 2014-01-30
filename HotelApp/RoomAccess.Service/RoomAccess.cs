@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Windows.Media.Media3D;
 
 #endregion
@@ -83,28 +82,6 @@ namespace HotelCorp.HotelApp.Services.Access {
             if (guest.FirstName.Trim() == "" && guest.LastName.Trim() == "") {
                 throw new Exception("Guests must have a name");
             }
-        }
-    }
-
-    public class Room {
-        public Guest Guest;
-        public Point3D Location;
-        public string RoomNumber;
-
-        public Room(string roomNumber, Point3D location) {
-            RoomNumber = roomNumber;
-            Location = location;
-        }
-    }
-
-    [DataContract]
-    public class Guest {
-        [DataMember] public string FirstName;
-        [DataMember] public string LastName;
-
-        public Guest(string fname, string lname) {
-            FirstName = fname;
-            LastName = lname;
         }
     }
 }

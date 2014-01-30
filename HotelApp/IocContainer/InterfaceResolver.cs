@@ -1,4 +1,4 @@
-﻿#region Using declarations
+﻿#region
 
 using System;
 using System.Collections.Concurrent;
@@ -6,11 +6,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using IocContainer;
 
 #endregion
 
-namespace Bridgepoint.Enterprise.Common.IocContainer {
+namespace JamesMeyer.IocContainer {
     /// <summary>
     ///     Instanced interface resolver used to register and resolve requests for interface implementations - used by Assembly container
     /// </summary>
@@ -51,7 +50,6 @@ namespace Bridgepoint.Enterprise.Common.IocContainer {
             }
             return new Registration(this, name, typeof(TC), typeof(TS));
         }
-
 
         /// <summary>
         ///     Resolves an interface request to the registered class, based on named registration
@@ -97,10 +95,10 @@ namespace Bridgepoint.Enterprise.Common.IocContainer {
         /// </summary>
         public class Registration {
             private readonly Dictionary<string, Func<object>> _args;
-            private readonly InterfaceResolver _interfaceResolver;
-            private readonly string _name;
             private readonly Type _concreteType;
+            private readonly InterfaceResolver _interfaceResolver;
             private readonly Type _interfaceType;
+            private readonly string _name;
 
             internal Registration(InterfaceResolver interfaceResolver, string name, Type concreteType, Type interfaceType) {
                 _interfaceResolver = interfaceResolver;
@@ -122,24 +120,26 @@ namespace Bridgepoint.Enterprise.Common.IocContainer {
 
                 _args = c.GetParameters()
                          .ToDictionary<ParameterInfo, string, Func<object>>(
-                             x => x.Name,
-                             x =>
-                             (() =>
-                              // TODO: Original line - interfaceResolver.ProviderDictionary[interfaceResolver.NameDictionary[x.ParameterType]]()
-                              {
-                                  Type pType = x.ParameterType;
-                                  if (pType == typeof(InterfaceResolver)) {
-                                      return interfaceResolver;
-                                  }
-                                  string nameMap = interfaceResolver.NameDictionary[pType];
-                                  object provider = interfaceResolver.ProviderDictionary[new Tuple<Type, string>(pType, nameMap)]();
-                                  return provider;
-                              }
-                             )
+                                                                            x => x.Name,
+                                                                            x =>
+                                                                            (() =>
+                                                                             // TODO: Original line - interfaceResolver.ProviderDictionary[interfaceResolver.NameDictionary[x.ParameterType]]()
+                                                                                 {
+                                                                                     Type pType = x.ParameterType;
+                                                                                     if (pType == typeof(InterfaceResolver)) {
+                                                                                         return interfaceResolver;
+                                                                                     }
+                                                                                     string nameMap = interfaceResolver.NameDictionary[pType];
+                                                                                     object provider =
+                                                                                         interfaceResolver.ProviderDictionary[
+                                                                                                                              new Tuple<Type, string>(pType,
+                                                                                                                                                      nameMap)]();
+                                                                                     return provider;
+                                                                                 }
+                                                                            )
                     );
                 interfaceResolver.ProviderDictionary[new Tuple<Type, string>(interfaceType, name)] = () => c.Invoke(_args.Values.Select(x => x()).ToArray());
             }
-
 
             /// <summary>
             ///     Registeres a specific object instance to be returned when interface is resolved

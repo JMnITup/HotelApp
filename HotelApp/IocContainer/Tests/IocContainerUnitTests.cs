@@ -1,12 +1,11 @@
 ﻿#region Using declarations
 
 using System;
-using Bridgepoint.Enterprise.Common.IocContainer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 #endregion
 
-namespace IocContainer.Tests {
+namespace JamesMeyer.IocContainer.Tests {
     [TestClass]
     public class IocContainerUnitTests {
         [TestMethod]

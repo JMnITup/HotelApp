@@ -1,4 +1,4 @@
-﻿namespace Bridgepoint.Enterprise.Common.IocContainer {
+﻿namespace JamesMeyer.IocContainer {
 
     #region
 
@@ -26,7 +26,6 @@
             Resolver.ClearRegistrations();
             DefaultRegistration();
         }
-
 
         /// <summary>
         ///     Registers an interface to a concrete class resolution

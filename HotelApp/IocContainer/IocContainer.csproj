@@ -7,7 +7,7 @@
     <ProjectGuid>{89E3A50F-A4BC-4D0B-8A3B-1E22C80799EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IocContainer</RootNamespace>
+    <RootNamespace>JamesMeyer.IocContainer</RootNamespace>
     <AssemblyName>IocContainer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

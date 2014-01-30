@@ -1,10 +1,10 @@
-#region Using declarations
+#region
 
 using System;
 
 #endregion
 
-namespace IocContainer {
+namespace JamesMeyer.IocContainer {
     public class RegistrationMissingException : Exception {
         public RegistrationMissingException(string message, Exception innerException) : base(message, innerException) {}
     }

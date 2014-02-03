@@ -61,6 +61,7 @@
     <Compile Include="IOccupancyManager_Wpf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OccupancyManager_Wpf.cs" />
+    <Compile Include="Repackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

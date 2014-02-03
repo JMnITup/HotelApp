@@ -43,13 +43,11 @@ namespace HotelCorp.HotelApp.Services.Managers {
         }
 
         public List<Room> GetAllRooms() {
-            List<Room> list;
             using (var roomAccessService = _ioc.Resolve<IRoomAccess>()) {
                 roomAccessService.GetRoomList();
                 var accessRoomList = roomAccessService.GetRoomList();
-                list = accessRoomList.Select(room => (Room)room).ToList();
+                return Repackage.RoomList(accessRoomList);
             }
-            return list;
         }
 
         #endregion

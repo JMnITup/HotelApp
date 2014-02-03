@@ -36,14 +36,6 @@ namespace HotelCorp.HotelApp.Services.Managers {
             RoomNumber = roomNumber;
             Location = location;
         }
-
-        public static implicit operator Room(Access.Room fromRoom) {
-            if (fromRoom == null) {
-                return null;
-            }
-            var toRoom = new Room(fromRoom.RoomNumber, fromRoom.Location) {Guest = fromRoom.Guest};
-            return toRoom;
-        }
     }
 
     [DataContract]
@@ -54,14 +46,6 @@ namespace HotelCorp.HotelApp.Services.Managers {
         public Guest(string fname, string lname) {
             FirstName = fname;
             LastName = lname;
-        }
-
-        public static implicit operator Guest(Access.Guest fromGuest) {
-            if (fromGuest == null) {
-                return null;
-            }
-            var toGuest = new Guest(fromGuest.FirstName, fromGuest.LastName);
-            return toGuest;
         }
     }
 }

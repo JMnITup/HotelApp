@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Windows.Media.Media3D;
 using HotelCorp.HotelApp.Services.Access;
+using HotelCorp.HotelApp.Services.Engines;
 using JamesMeyer.IocContainer;
 using ServiceModelEx.Hosting;
 
@@ -15,6 +16,7 @@ namespace HotelCorp.HotelApp.Services.Managers {
 
         public OccupancyManager_Wpf() {
             _ioc.Register<IRoomAccess, RoomAccess>().AsDelegate(InProcFactory.CreateInstance<RoomAccess, IRoomAccess>);
+            _ioc.Register<IReservingEngine, ReservingEngine>().AsDelegate(InProcFactory.CreateInstance<ReservingEngine, IReservingEngine>);
         }
 
         public OccupancyManager_Wpf(InterfaceResolver resolver) {
@@ -30,8 +32,12 @@ namespace HotelCorp.HotelApp.Services.Managers {
             return GetAllRooms();
         }
 
-        public void CheckingGuest(Guest guest, string roomNumber) {
-            throw new NotImplementedException();
+        public void CheckinGuest(Guest guest, string roomNumber = null) {
+            if (roomNumber == null) {
+                using (var reservingEngine = _ioc.Resolve<IReservingEngine>()) {
+                    var room = reservingEngine.PerformAutoCheckin(Repackage.Guest(guest));
+                }
+            }
         }
 
         public void CheckoutGuest(Guest guest, string roomNumber) {

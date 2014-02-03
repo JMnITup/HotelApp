@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Media.Media3D;
 using JamesMeyer.IocContainer;
 
@@ -15,12 +16,12 @@ namespace HotelCorp.HotelApp.Services.Access {
         /// </summary>
         public static List<Room> HotelMap = new List<Room>();
 
-        private InterfaceResolver Ioc = new InterfaceResolver();
+        private readonly InterfaceResolver _ioc = new InterfaceResolver();
 
         public RoomAccess() {}
 
         public RoomAccess(InterfaceResolver resolver) {
-            Ioc = resolver;
+            _ioc = resolver;
         }
 
         public void GenerateBasicHotel(uint xSize, uint ySize, uint zSize) {
@@ -64,6 +65,10 @@ namespace HotelCorp.HotelApp.Services.Access {
 
         public List<Room> GetAllAssignedRooms() {
             return HotelMap.FindAll(room => room.Guest != null);
+        }
+
+        public List<Room> GetRoomList() {
+            return HotelMap;
         }
 
         protected bool IsSpecifiedGuestInRoom(Guest guest, Room room) {

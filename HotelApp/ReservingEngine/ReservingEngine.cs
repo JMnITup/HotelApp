@@ -6,7 +6,7 @@ using System.Transactions;
 using System.Windows.Media.Media3D;
 using HotelCorp.HotelApp.Services.Access;
 using JamesMeyer.IocContainer;
-using ServiceModelEx;
+using ServiceModelEx.Hosting;
 
 #endregion
 

@@ -280,6 +280,10 @@ namespace HotelCorp.HotelApp.Services.Engines.Tests {
                            };
             }
 
+            public List<Room> GetRoomList() {
+                throw new NotImplementedException();
+            }
+
             #endregion
         }
     }

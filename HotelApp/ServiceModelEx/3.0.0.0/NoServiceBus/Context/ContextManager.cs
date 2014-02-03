@@ -11,7 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Context
 {
    public static class ContextManager
    {

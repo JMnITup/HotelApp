@@ -9,10 +9,11 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System.ServiceModel.Description;
-using ServiceModelEx.PublishSubscribeDataSetTableAdapters;
+using ServiceModelEx.Bindings;
+using ServiceModelEx.Data;
+using ServiceModelEx.Extensions;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.PublishSubscribe
 {
    [BindingRequirement(TransactionFlowEnabled = true)]
    public abstract class SubscriptionManager<T> where T : class

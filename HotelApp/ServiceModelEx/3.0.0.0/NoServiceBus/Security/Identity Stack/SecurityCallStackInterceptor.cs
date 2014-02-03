@@ -5,7 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.ServiceModel.Dispatcher;
-
+using ServiceModelEx.GenericInterceptor;
 
 namespace ServiceModelEx
 {

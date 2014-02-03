@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Transactions;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Transactions.VRMs
 {
    /// <summary>
    /// Protects a resource manager by proving exclusive transaction isolation (Serializable level only)

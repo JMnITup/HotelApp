@@ -6,7 +6,7 @@ using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Duplex
 {
    public abstract class DuplexClientBase<T,C> : DuplexClientBase<T> where T : class
    {

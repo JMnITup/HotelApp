@@ -9,7 +9,7 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext
 {
    [AttributeUsage(AttributeTargets.Class)]
    public class ThreadPoolBehaviorAttribute : Attribute,IContractBehavior,IServiceBehavior

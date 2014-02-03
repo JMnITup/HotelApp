@@ -9,8 +9,11 @@ using System.Runtime.CompilerServices;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
+using ServiceModelEx.Bindings;
+using ServiceModelEx.Data;
+using ServiceModelEx.Duplex;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Hosting
 {
    public static class InProcFactory
    {

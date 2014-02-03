@@ -9,7 +9,7 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Persistence;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Transactions
 {
    [AttributeUsage(AttributeTargets.Class)]
    public class TransactionalBehaviorAttribute : Attribute,IServiceBehavior

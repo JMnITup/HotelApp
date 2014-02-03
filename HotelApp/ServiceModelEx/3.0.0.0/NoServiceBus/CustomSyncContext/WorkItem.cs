@@ -5,7 +5,7 @@
 using System;
 using System.Threading;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext
 {
    [Serializable]
    internal class WorkItem

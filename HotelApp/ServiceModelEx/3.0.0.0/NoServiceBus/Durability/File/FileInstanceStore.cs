@@ -2,7 +2,6 @@
 //Questions? Comments? go to 
 //http://www.idesign.net
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,7 +9,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Durability.File
 {
    public class FileInstanceStore<ID,T> : IInstanceStore<ID,T> where ID : IEquatable<ID>
    {

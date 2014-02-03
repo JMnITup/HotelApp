@@ -8,7 +8,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.GenericInterceptor
 {
    [AttributeUsage(AttributeTargets.Class)]
    public abstract class ServiceInterceptorBehaviorAttribute : Attribute,IServiceBehavior

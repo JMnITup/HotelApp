@@ -2,13 +2,11 @@
 //Questions? Comments? go to 
 //http://www.idesign.net
 
-using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using ServiceModelEx;
-using System.Reflection;
+using ServiceModelEx.Context;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext.Priority
 {
    public abstract class PriorityClientBase<T> : HeaderClientBase<T,CallPriority> where T : class
    {

@@ -4,14 +4,9 @@
 
 using System;
 using System.ServiceModel;
-using System.Diagnostics;
-using ServiceModelEx;
-using System.Transactions;
-using System.Collections.Generic;
-using ServiceModelEx.Errors.Logbook;
-using ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters;
+using ServiceModelEx.Data;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Errors.Logbook
 {
    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall,UseSynchronizationContext = false)]
    public class LogbookManager : ILogbookManagerService

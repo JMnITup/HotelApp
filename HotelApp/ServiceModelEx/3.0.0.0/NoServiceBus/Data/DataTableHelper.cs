@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Data
 {
    public static class DataTableHelper
    {

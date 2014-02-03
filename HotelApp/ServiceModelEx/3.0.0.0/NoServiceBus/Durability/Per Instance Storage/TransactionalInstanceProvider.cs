@@ -3,6 +3,7 @@
 //http://www.idesign.net
 
 using System;
+using ServiceModelEx.Durability;
 
 namespace ServiceModelEx
 {

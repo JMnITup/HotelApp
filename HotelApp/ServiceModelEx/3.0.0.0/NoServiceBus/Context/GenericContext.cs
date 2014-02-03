@@ -7,8 +7,7 @@ using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
-
-namespace ServiceModelEx
+namespace ServiceModelEx.Context
 {
    [DataContract]
    public class GenericContext<T>

@@ -10,7 +10,7 @@ using System.ServiceModel;
 using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Queueing
 {
    public static class QueuedServiceHelper
    {

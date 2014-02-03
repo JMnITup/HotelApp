@@ -2,17 +2,16 @@
 //Questions? Comments? go to 
 //http://www.idesign.net
 
-using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Errors.Logbook
 {
    [ServiceContract]
    public interface ILogbookManager
    {
        [OperationContract(IsOneWay = true)]
-       void LogEntry(ServiceModelEx.LogbookEntryClient entry);
+       void LogEntry(LogbookEntryClient entry);
    }
 
    public class LogbookManagerClient : ClientBase<ILogbookManager>,ILogbookManager
@@ -32,7 +31,7 @@ namespace ServiceModelEx
       public LogbookManagerClient(Binding binding,EndpointAddress remoteAddress) : base(binding,remoteAddress)
       {}
 
-      public void LogEntry(ServiceModelEx.LogbookEntryClient entry)
+      public void LogEntry(LogbookEntryClient entry)
       {
          Channel.LogEntry(entry);
       }

@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Security.Permissions;
 using System.Threading;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext
 {
    [SecurityPermission(SecurityAction.Demand,ControlThread = true)]
    public class ThreadPoolSynchronizer : SynchronizationContext,IDisposable

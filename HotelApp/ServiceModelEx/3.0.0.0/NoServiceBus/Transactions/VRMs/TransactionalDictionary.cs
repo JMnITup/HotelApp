@@ -4,8 +4,7 @@
 
 using System.Collections.Generic;
 
-
-namespace ServiceModelEx.Transactional
+namespace ServiceModelEx.Transactions.VRMs
 {
    public class TransactionalDictionary<K,T> : TransactionalCollection<Dictionary<K,T>,KeyValuePair<K,T>>,IDictionary<K,T>
    {

@@ -10,7 +10,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using Microsoft.CSharp.RuntimeBinder;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Bindings
 {
    [AttributeUsage(AttributeTargets.Class)]
    public class BindingRequirementAttribute : Attribute,IServiceBehavior,IEndpointBehavior

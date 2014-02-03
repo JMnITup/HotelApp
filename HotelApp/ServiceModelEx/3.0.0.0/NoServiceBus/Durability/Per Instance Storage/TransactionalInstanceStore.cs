@@ -5,6 +5,8 @@
 
 using System;
 using System.Diagnostics;
+using ServiceModelEx.Durability;
+using ServiceModelEx.Transactions.VRMs;
 
 namespace ServiceModelEx
 {

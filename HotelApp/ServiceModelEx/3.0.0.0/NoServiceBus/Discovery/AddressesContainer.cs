@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Discovery
 {
    public abstract class AddressesContainer<T> : IEnumerable<EndpointAddress>,IEnumerable<KeyValuePair<EndpointAddress,Uri[]>>,IDisposable where T : class
    {

@@ -3,16 +3,8 @@
 //http://www.idesign.net
 
 using System;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Threading;
-using System.ServiceModel;
-using System.ServiceModel.Description;
-using System.ServiceModel.Channels;
-using System.ServiceModel.Dispatcher;
-using System.Collections.ObjectModel;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext.Priority
 {
    [AttributeUsage(AttributeTargets.Class)]
    public class PriorityCallsBehaviorAttribute : ThreadPoolBehaviorAttribute

@@ -2,18 +2,10 @@
 //Questions? Comments? go to 
 //http://www.idesign.net
 
-using System;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Threading;
-using System.ServiceModel;
-using System.ServiceModel.Description;
-using System.ServiceModel.Channels;
-using System.ServiceModel.Dispatcher;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
+using ServiceModelEx.Context;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext.Priority
 {
    //If using GenericContext<T> is too raw, can encapsulate: 
    [DataContract]

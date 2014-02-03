@@ -10,10 +10,11 @@ using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
-using System.ServiceModel.Discovery;
 using System.Threading;
+using ServiceModelEx.Extensions;
+using ServiceModelEx.Hosting;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Discovery
 {
    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,UseSynchronizationContext = false)]
    public abstract class DiscoveryPublishService<T> : IDisposable where T : class

@@ -5,7 +5,7 @@
 using System;
 using System.ServiceModel.Persistence;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Durability
 {
    public abstract class MemoryProvider : PersistenceProvider
    {

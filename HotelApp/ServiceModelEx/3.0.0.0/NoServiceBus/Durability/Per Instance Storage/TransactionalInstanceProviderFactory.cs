@@ -5,6 +5,7 @@
 
 using System;
 using System.ServiceModel.Persistence;
+using ServiceModelEx.Durability;
 
 namespace ServiceModelEx
 {

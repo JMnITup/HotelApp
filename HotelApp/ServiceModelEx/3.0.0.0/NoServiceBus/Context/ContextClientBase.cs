@@ -7,8 +7,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-
-namespace ServiceModelEx
+namespace ServiceModelEx.Context
 {
    public abstract class ContextClientBase<T> : ClientBase<T> where T : class
    {

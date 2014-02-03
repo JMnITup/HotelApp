@@ -4,7 +4,7 @@
 
 using System.ServiceModel;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Duplex
 {
    public class InstanceContext<T> 
    {

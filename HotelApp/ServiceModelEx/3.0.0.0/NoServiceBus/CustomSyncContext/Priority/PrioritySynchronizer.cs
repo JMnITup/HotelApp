@@ -3,14 +3,12 @@
 //http://www.idesign.net
 
 using System;
-using System.Diagnostics;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading;
 using System.Security.Permissions;
-using System.ServiceModel;
+using ServiceModelEx.Context;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext.Priority
 {
    public enum CallPriority
    {

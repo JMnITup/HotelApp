@@ -8,9 +8,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
 
-
-
-namespace ServiceModelEx
+namespace ServiceModelEx.Data
 {
    public class DataContractSerializer<T> : XmlObjectSerializer
    {

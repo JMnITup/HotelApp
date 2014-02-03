@@ -7,6 +7,7 @@ using System.Reflection;
 using System.ServiceModel;
 using System.Threading;
 using System.Windows.Forms;
+using ServiceModelEx.Hosting;
 
 namespace ServiceModelEx
 {

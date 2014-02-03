@@ -3,8 +3,9 @@
 //http://www.idesign.net
 
 using System.ServiceModel;
+using ServiceModelEx.Context;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Queueing
 {
    public abstract class ServiceResponseBase<T> : HeaderClientBase<T,ResponseContext> where T : class
    {

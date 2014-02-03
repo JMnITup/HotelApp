@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.ServiceModel;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Errors
 {
    public static class DebugHelper
    {

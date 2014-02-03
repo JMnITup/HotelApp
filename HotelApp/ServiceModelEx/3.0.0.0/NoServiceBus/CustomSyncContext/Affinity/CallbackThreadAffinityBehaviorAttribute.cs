@@ -4,7 +4,7 @@
 
 using System;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext.Affinity
 {
    [AttributeUsage(AttributeTargets.Class)]
    public class CallbackThreadAffinityBehaviorAttribute : CallbackThreadPoolBehaviorAttribute

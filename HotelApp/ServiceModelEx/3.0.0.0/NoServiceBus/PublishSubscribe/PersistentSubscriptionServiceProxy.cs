@@ -5,7 +5,7 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.PublishSubscribe
 {
    public class PersistentSubscriptionServiceClient : ClientBase<IPersistentSubscriptionService>,IPersistentSubscriptionService
    {

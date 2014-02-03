@@ -5,7 +5,7 @@
 using System.Security.Permissions;
 using System.Threading;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext.Affinity
 {
    [SecurityPermission(SecurityAction.Demand,ControlThread = true)]
    public class AffinitySynchronizer : ThreadPoolSynchronizer

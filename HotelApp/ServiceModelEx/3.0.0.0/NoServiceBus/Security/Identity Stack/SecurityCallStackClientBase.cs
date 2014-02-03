@@ -4,7 +4,7 @@
 
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-
+using ServiceModelEx.Context;
 
 namespace ServiceModelEx
 {

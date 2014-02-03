@@ -5,8 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
-namespace ServiceModelEx.Transactional
+namespace ServiceModelEx.Transactions.VRMs
 {
    public abstract class TransactionalCollection<C,T> : Transactional<C>,IEnumerable<T> where C : IEnumerable<T>
    {

@@ -27,5 +27,13 @@ namespace HotelCorp.HotelApp.Services.Managers {
             var toGuest = new Guest(@from.FirstName, @from.LastName);
             return toGuest;
         }
+
+        public static Access.Guest Guest(Guest from) {
+            if (@from == null) {
+                return null;
+            }
+            var toGuest = new Access.Guest(@from.FirstName, @from.LastName);
+            return toGuest;
+        }
     }
 }

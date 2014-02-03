@@ -105,6 +105,28 @@
   <ItemGroup>
     <Folder Include="Voxel\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IocContainer\IocContainer.csproj">
+      <Project>{89E3A50F-A4BC-4D0B-8A3B-1E22C80799EF}</Project>
+      <Name>IocContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OccupancyManager\OccupancyManager_Wpf.Services.csproj">
+      <Project>{386059BE-2A8F-41CB-AC30-04E137C3CD65}</Project>
+      <Name>OccupancyManager_Wpf.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReservingEngine\ReservingEngine.Services.csproj">
+      <Project>{D6465171-E0DE-4C24-AEAE-76F7A15359EA}</Project>
+      <Name>ReservingEngine.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoomAccess.Service\RoomAccess.Services.csproj">
+      <Project>{15B3E0D2-6217-493A-A690-158C497F5318}</Project>
+      <Name>RoomAccess.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceModelEx\3.0.0.0\NoServiceBus\ServiceModelEx.csproj">
+      <Project>{0858C710-AF53-4049-B98E-CFE3638D1228}</Project>
+      <Name>ServiceModelEx</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,10 +5,16 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
+using HotelCorp.HotelApp.Services.Access;
+using HotelCorp.HotelApp.Services.Engines;
+using HotelCorp.HotelApp.Services.Managers;
+using JamesMeyer.IocContainer;
+using ServiceModelEx.Hosting;
 
 namespace WpfApplication1
 {
@@ -147,6 +153,30 @@ namespace WpfApplication1
         private void view1_KeyDown(object sender, KeyEventArgs e)
         {
             // Should update preview voxel when shift is pressed
+            UpdatePreview();
+        }
+
+        private void GenerateNewHotel(object sender, RoutedEventArgs e) {
+            // TODO: update this to actually use the service
+            var resolver = new InterfaceResolver();
+            resolver.Register<IRoomAccess, RoomAccess>();
+            resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>();
+            resolver.Register<IReservingEngine, ReservingEngine>();
+
+            using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {//InProcFactory.CreateInstance<OccupancyManager_Wpf, IOccupancyManager_Wpf>()) {
+                uint x, y, z;
+                x = UInt32.Parse(GenX.Text);
+                y = UInt32.Parse(GenY.Text);
+                z = UInt32.Parse(GenZ.Text);
+                var hotelMap = svc.GenerateBasicHotel(x, y, z);
+                vm.Clear();
+                hotelMap.ForEach(room =>
+                                    {
+                                        if (room.Guest == null) {
+                                            vm.AddVoxel(room.Location);
+                                        }
+                                    });
+            }
             UpdatePreview();
         }
     }

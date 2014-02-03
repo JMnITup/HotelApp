@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -9,7 +10,7 @@ using System.Windows.Media.Media3D;
 
 namespace HotelCorp.HotelApp.Services.Managers {
     [ServiceContract]
-    public interface IOccupancyManager_Wpf {
+    public interface IOccupancyManager_Wpf : IDisposable {
         [OperationContract]
         List<Room> GenerateBasicHotel(uint roomCountHorizontal, uint roomCountDepth, uint roomCountVerticle);
 

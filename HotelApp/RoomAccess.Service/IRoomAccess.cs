@@ -29,5 +29,8 @@ namespace HotelCorp.HotelApp.Services.Access {
 
         [OperationContract]
         List<Room> GetAllAssignedRooms();
+
+        [OperationContract]
+        List<Room> GetRoomList();
     }
 }

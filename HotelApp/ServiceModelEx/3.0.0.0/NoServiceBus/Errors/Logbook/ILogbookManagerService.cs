@@ -2,14 +2,9 @@
 //Questions? Comments? go to 
 //http://www.idesign.net
 
-using System;
 using System.ServiceModel;
-using System.Diagnostics;
-using ServiceModelEx;
-using System.Transactions;
-using System.Collections.Generic;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Errors.Logbook
 {
    [ServiceContract(Name="ILogbookManager")]
    public interface ILogbookManagerService

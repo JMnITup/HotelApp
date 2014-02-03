@@ -11,8 +11,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Collections.Generic;
 
-
-namespace ServiceModelEx
+namespace ServiceModelEx.Data
 {
    public static class GenericResolverInstaller
    {

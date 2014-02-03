@@ -10,7 +10,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Configuration;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Bindings
 {
    public class NetNamedPipeContextBinding : NetNamedPipeBinding
    {

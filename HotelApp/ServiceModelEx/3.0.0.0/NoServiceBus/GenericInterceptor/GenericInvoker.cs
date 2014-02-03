@@ -6,7 +6,7 @@ using System;
 using System.Diagnostics;
 using System.ServiceModel.Dispatcher;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.GenericInterceptor
 {
    public abstract class GenericInvoker : IOperationInvoker
    {

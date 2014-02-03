@@ -11,7 +11,7 @@ using System.Threading;
 using System.Xml;
 using System.Runtime.CompilerServices;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Discovery
 {
    public class AnnouncementSink<T> : AddressesContainer<T> where T : class
    {

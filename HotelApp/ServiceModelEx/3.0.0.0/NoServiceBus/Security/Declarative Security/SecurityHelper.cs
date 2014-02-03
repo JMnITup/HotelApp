@@ -10,6 +10,7 @@ using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.ServiceModel.Security;
+using ServiceModelEx.Duplex;
 
 namespace ServiceModelEx
 {

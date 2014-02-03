@@ -8,8 +8,9 @@ using System.Diagnostics;
 using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using ServiceModelEx.Errors.Logbook;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Errors
 {
    public static class ErrorHandlerHelper
    {

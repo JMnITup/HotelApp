@@ -6,8 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-
-namespace ServiceModelEx.Transactional
+namespace ServiceModelEx.Transactions.VRMs
 {
    public class TransactionalSortedDictionary<K,T> : TransactionalCollection<SortedDictionary<K,T>,KeyValuePair<K,T>>,IDictionary<K,T>,IDictionary
    {

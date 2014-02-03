@@ -2,12 +2,11 @@
 //Questions? Comments? go to 
 //http://www.idesign.net
 
-
 using System;
 using System.Collections.Specialized;
 using System.ServiceModel.Persistence;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Durability.File
 {
    public class FilePersistenceProviderFactory : PersistenceProviderFactory
    {

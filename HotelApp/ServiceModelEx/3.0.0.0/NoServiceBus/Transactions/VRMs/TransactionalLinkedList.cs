@@ -6,8 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-
-namespace ServiceModelEx.Transactional
+namespace ServiceModelEx.Transactions.VRMs
 {
    public class TransactionalLinkedList<T> : TransactionalCollection<LinkedList<T>,T>,ICollection<T>,IEnumerable<T>,ICollection
    {

@@ -5,7 +5,7 @@
 using System;
 using System.ServiceModel;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Hosting
 {
    public abstract class WcfWrapper<S,I> : IDisposable,ICommunicationObject
                                                        where I : class 

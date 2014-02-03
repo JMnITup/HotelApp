@@ -5,7 +5,7 @@
 using System;
 using System.ServiceModel;
 using System.Windows.Forms;
-
+using ServiceModelEx.Hosting;
 
 namespace ServiceModelEx
 {

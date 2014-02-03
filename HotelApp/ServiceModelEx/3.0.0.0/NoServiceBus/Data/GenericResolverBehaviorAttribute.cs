@@ -8,8 +8,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 
-
-namespace ServiceModelEx
+namespace ServiceModelEx.Data
 {
    [AttributeUsage(AttributeTargets.Class)]
    public class GenericResolverBehaviorAttribute : Attribute,IServiceBehavior

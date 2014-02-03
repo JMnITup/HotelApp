@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using ServiceModelEx.Duplex;
 
 namespace ServiceModelEx
 {

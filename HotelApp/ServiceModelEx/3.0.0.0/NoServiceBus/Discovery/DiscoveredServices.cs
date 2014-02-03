@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.ServiceModel.Discovery;
 using System.Threading;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Discovery
 {
    public class DiscoveredServices<T> : AddressesContainer<T> where T : class
    {

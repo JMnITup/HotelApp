@@ -8,11 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace ServiceModelEx.Errors.Logbook {
 #pragma warning disable 1591
 
-namespace ServiceModelEx.Errors.Logbook {
-    
-    
     /// <summary>
     ///Represents a strongly typed in-memory cache of data.
     ///</summary>
@@ -42,7 +40,7 @@ namespace ServiceModelEx.Errors.Logbook {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         protected WCFLogbookDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                base(info, context, false) {
+            base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -247,7 +245,7 @@ namespace ServiceModelEx.Errors.Logbook {
                             s1.Position = 0;
                             s2.Position = 0;
                             for (; ((s1.Position != s1.Length) 
-                                        && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    && (s1.ReadByte() == s2.ReadByte())); ) {
                                 ;
                             }
                             if ((s1.Position == s1.Length)) {
@@ -338,7 +336,7 @@ namespace ServiceModelEx.Errors.Logbook {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected EntriesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
+                base(info, context) {
                 this.InitVars();
             }
             
@@ -502,21 +500,21 @@ namespace ServiceModelEx.Errors.Logbook {
             public EntriesRow AddEntriesRow(string MachineName, string HostName, string AssemblyName, string FileName, int LineNumber, string TypeName, string MemberAccessed, string EntryDate, string EntryTime, string ExceptionName, string ExceptionMessage, string ProvidedFault, string ProvidedMessage, string Event) {
                 EntriesRow rowEntriesRow = ((EntriesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        MachineName,
-                        HostName,
-                        AssemblyName,
-                        FileName,
-                        LineNumber,
-                        TypeName,
-                        MemberAccessed,
-                        EntryDate,
-                        EntryTime,
-                        ExceptionName,
-                        ExceptionMessage,
-                        ProvidedFault,
-                        ProvidedMessage,
-                        Event,
-                        null};
+                                                              MachineName,
+                                                              HostName,
+                                                              AssemblyName,
+                                                              FileName,
+                                                              LineNumber,
+                                                              TypeName,
+                                                              MemberAccessed,
+                                                              EntryDate,
+                                                              EntryTime,
+                                                              ExceptionName,
+                                                              ExceptionMessage,
+                                                              ProvidedFault,
+                                                              ProvidedMessage,
+                                                              Event,
+                                                              null};
                 rowEntriesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEntriesRow);
                 return rowEntriesRow;
@@ -717,7 +715,7 @@ namespace ServiceModelEx.Errors.Logbook {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                        && (s1.ReadByte() == s2.ReadByte())); ) {
                                     ;
                                 }
                                 if ((s1.Position == s1.Length)) {
@@ -750,7 +748,7 @@ namespace ServiceModelEx.Errors.Logbook {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal EntriesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
+                base(rb) {
                 this.tableEntries = ((EntriesDataTable)(this.Table));
             }
             
@@ -1073,10 +1071,7 @@ namespace ServiceModelEx.Errors.Logbook {
             }
         }
     }
-}
-namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
-    
-    
+
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
     ///</summary>
@@ -1084,7 +1079,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+                                                     ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class EntriesTableAdapter : global::System.ComponentModel.Component {
         
@@ -1155,15 +1150,15 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
                 if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
+                     && (this.Adapter.DeleteCommand != null))) {
                     this.Adapter.DeleteCommand.Transaction = this._transaction;
                 }
                 if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
+                     && (this.Adapter.InsertCommand != null))) {
                     this.Adapter.InsertCommand.Transaction = this._transaction;
                 }
                 if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
+                     && (this.Adapter.UpdateCommand != null))) {
                     this.Adapter.UpdateCommand.Transaction = this._transaction;
                 }
             }
@@ -1248,8 +1243,8 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT MachineName, HostName, AssemblyName, FileName, LineNumber, TypeName, Membe" +
-                "rAccessed, EntryDate, EntryTime, ExceptionName, ExceptionMessage, ProvidedFault," +
-                " ProvidedMessage, Event, EntryNumber FROM dbo.Entries";
+                                                     "rAccessed, EntryDate, EntryTime, ExceptionName, ExceptionMessage, ProvidedFault," +
+                                                     " ProvidedMessage, Event, EntryNumber FROM dbo.Entries";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -1300,7 +1295,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
+                                                                             dataRow});
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1401,7 +1396,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+                 != global::System.Data.ConnectionState.Open)) {
                 this.Adapter.InsertCommand.Connection.Open();
             }
             try {
@@ -1423,7 +1418,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+                 != global::System.Data.ConnectionState.Open)) {
                 command.Connection.Open();
             }
             int returnValue;
@@ -1445,7 +1440,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerDesigner, Microsoft.VSD" +
-        "esigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+                                                     "esigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapterManager")]
     public partial class TableAdapterManager : global::System.ComponentModel.Component {
         
@@ -1471,8 +1466,8 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
+                                                       "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+                                                       "a", "System.Drawing.Design.UITypeEditor")]
         public EntriesTableAdapter EntriesTableAdapter {
             get {
                 return this._entriesTableAdapter;
@@ -1502,7 +1497,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
                     return this._connection;
                 }
                 if (((this._entriesTableAdapter != null) 
-                            && (this._entriesTableAdapter.Connection != null))) {
+                     && (this._entriesTableAdapter.Connection != null))) {
                     return this._entriesTableAdapter.Connection;
                 }
                 return null;
@@ -1536,7 +1531,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
                 global::System.Data.DataRow[] updatedRows = dataSet.Entries.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
+                     && (0 < updatedRows.Length))) {
                     result = (result + this._entriesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
@@ -1554,7 +1549,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
             if ((this._entriesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Entries.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
+                     && (0 < addedRows.Length))) {
                     result = (result + this._entriesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
@@ -1572,7 +1567,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
             if ((this._entriesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Entries.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
+                     && (0 < deletedRows.Length))) {
                     result = (result + this._entriesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
@@ -1587,11 +1582,11 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             if (((updatedRows == null) 
-                        || (updatedRows.Length < 1))) {
+                 || (updatedRows.Length < 1))) {
                 return updatedRows;
             }
             if (((allAddedRows == null) 
-                        || (allAddedRows.Count < 1))) {
+                 || (allAddedRows.Count < 1))) {
                 return updatedRows;
             }
             global::System.Collections.Generic.List<global::System.Data.DataRow> realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
@@ -1617,18 +1612,18 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
                 return 0;
             }
             if (((this._entriesTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._entriesTableAdapter.Connection) == false))) {
+                 && (this.MatchTableAdapterConnection(this._entriesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
+                                                           "tring.");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
-                        "ger TableAdapter property to a valid TableAdapter instance.");
+                                                              "ger TableAdapter property to a valid TableAdapter instance.");
             }
             bool workConnOpened = false;
             if (((workConnection.State & global::System.Data.ConnectionState.Broken) 
-                        == global::System.Data.ConnectionState.Broken)) {
+                 == global::System.Data.ConnectionState.Broken)) {
                 workConnection.Close();
             }
             if ((workConnection.State == global::System.Data.ConnectionState.Closed)) {
@@ -1638,7 +1633,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
             global::System.Data.IDbTransaction workTransaction = workConnection.BeginTransaction();
             if ((workTransaction == null)) {
                 throw new global::System.ApplicationException("The transaction cannot begin. The current data connection does not support transa" +
-                        "ctions or the current state is not allowing the transaction to begin.");
+                                                              "ctions or the current state is not allowing the transaction to begin.");
             }
             global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
             global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
@@ -1749,7 +1744,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
                 return true;
             }
             if (((this.Connection == null) 
-                        || (inputConnection == null))) {
+                 || (inputConnection == null))) {
                 return true;
             }
             if (string.Equals(this.Connection.ConnectionString, inputConnection.ConnectionString, global::System.StringComparison.Ordinal)) {
@@ -1803,9 +1798,9 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
 
                 global::System.Data.DataRow parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
                 for (
-                ; ((parent != null) 
-                            && (traversedRows.ContainsKey(parent) == false)); 
-                ) {
+                    ; ((parent != null) 
+                       && (traversedRows.ContainsKey(parent) == false)); 
+                    ) {
                     distance = (distance + 1);
                     root = parent;
                     traversedRows[parent] = parent;
@@ -1817,9 +1812,9 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
                     traversedRows[row] = row;
                     parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
                     for (
-                    ; ((parent != null) 
-                                && (traversedRows.ContainsKey(parent) == false)); 
-                    ) {
+                        ; ((parent != null) 
+                           && (traversedRows.ContainsKey(parent) == false)); 
+                        ) {
                         distance = (distance + 1);
                         root = parent;
                         traversedRows[parent] = parent;
@@ -1854,7 +1849,7 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
                 }
                 else {
                     global::System.Diagnostics.Debug.Assert(((root1.Table != null) 
-                                    && (root2.Table != null)));
+                                                             && (root2.Table != null)));
                     if ((root1.Table.Rows.IndexOf(root1) < root2.Table.Rows.IndexOf(root2))) {
                         return -1;
                     }
@@ -1865,6 +1860,6 @@ namespace ServiceModelEx.Errors.Logbook.WCFLogbookDataSetTableAdapters {
             }
         }
     }
-}
 
 #pragma warning restore 1591
+}

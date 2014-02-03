@@ -8,12 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
+namespace ServiceModelEx.PublishSubscribe {
 #pragma warning disable 1591
 
-namespace ServiceModelEx {
-    using System;
-    
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator","2.0.0.0")]
     [Serializable()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -39,7 +38,7 @@ namespace ServiceModelEx {
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         protected PublishSubscribeDataSet(System.Runtime.Serialization.SerializationInfo info,System.Runtime.Serialization.StreamingContext context) : 
-                base(info,context,false) {
+            base(info,context,false) {
             if((this.IsBinarySerialized(info,context) == true)) {
                 this.InitVars(false);
                 System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -258,7 +257,7 @@ namespace ServiceModelEx {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected PersistentSubscribersDataTable(System.Runtime.Serialization.SerializationInfo info,System.Runtime.Serialization.StreamingContext context) : 
-                    base(info,context) {
+                base(info,context) {
                 this.InitVars();
             }
             
@@ -322,10 +321,10 @@ namespace ServiceModelEx {
             public PersistentSubscribersRow AddPersistentSubscribersRow(string Address,string Operation,string Contract) {
                 PersistentSubscribersRow rowPersistentSubscribersRow = ((PersistentSubscribersRow)(this.NewRow()));
                 rowPersistentSubscribersRow.ItemArray = new object[] {
-                        Address,
-                        Operation,
-                        Contract,
-                        null};
+                                                                         Address,
+                                                                         Operation,
+                                                                         Contract,
+                                                                         null};
                 this.Rows.Add(rowPersistentSubscribersRow);
                 return rowPersistentSubscribersRow;
             }
@@ -333,7 +332,7 @@ namespace ServiceModelEx {
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PersistentSubscribersRow FindByID(int ID) {
                 return ((PersistentSubscribersRow)(this.Rows.Find(new object[] {
-                            ID})));
+                                                                                   ID})));
             }
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -372,7 +371,7 @@ namespace ServiceModelEx {
                 this.columnID = new System.Data.DataColumn("ID",typeof(int),null,System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.Constraints.Add(new System.Data.UniqueConstraint("Constraint1",new System.Data.DataColumn[] {
-                                this.columnID},true));
+                                                                                                                     this.columnID},true));
                 this.columnAddress.AllowDBNull = false;
                 this.columnAddress.MaxLength = 500;
                 this.columnOperation.AllowDBNull = false;
@@ -474,7 +473,7 @@ namespace ServiceModelEx {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal PersistentSubscribersRow(System.Data.DataRowBuilder rb) : 
-                    base(rb) {
+                base(rb) {
                 this.tablePersistentSubscribers = ((PersistentSubscribersDataTable)(this.Table));
             }
             
@@ -547,16 +546,13 @@ namespace ServiceModelEx {
             }
         }
     }
-}
-namespace ServiceModelEx.PublishSubscribeDataSetTableAdapters {
-    
-    
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator","2.0.0.0")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.ComponentModel.ToolboxItem(true)]
     [System.ComponentModel.DataObjectAttribute(true)]
     [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner,Microsoft.VSDesigner" +
-        ",Version=8.0.0.0,Culture=neutral,PublicKeyToken=b03f5f7f11d50a3a")]
+                                             ",Version=8.0.0.0,Culture=neutral,PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class PersistentSubscribersTableAdapter : System.ComponentModel.Component {
         
@@ -644,8 +640,8 @@ namespace ServiceModelEx.PublishSubscribeDataSetTableAdapters {
             this._adapter.DeleteCommand = new System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PersistentSubscribers] WHERE (([Address] = @Original_Address) " +
-                "AND ([Operation] = @Original_Operation) AND ([Contract] = @Original_Contract) AN" +
-                "D ([ID] = @Original_ID))";
+                                                      "AND ([Operation] = @Original_Operation) AND ([Contract] = @Original_Contract) AN" +
+                                                      "D ([ID] = @Original_ID))";
             this._adapter.DeleteCommand.CommandType = System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_Address",System.Data.SqlDbType.VarChar,0,System.Data.ParameterDirection.Input,0,0,"Address",System.Data.DataRowVersion.Original,false,null,"","",""));
             this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_Operation",System.Data.SqlDbType.VarChar,0,System.Data.ParameterDirection.Input,0,0,"Operation",System.Data.DataRowVersion.Original,false,null,"","",""));
@@ -654,8 +650,8 @@ namespace ServiceModelEx.PublishSubscribeDataSetTableAdapters {
             this._adapter.InsertCommand = new System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PersistentSubscribers] ([Address],[Operation],[Contract]) VA" +
-                "LUES (@Address,@Operation,@Contract);\r\nSELECT Address,Operation,Contract,ID" +
-                " FROM PersistentSubscribers WHERE (ID = SCOPE_IDENTITY())";
+                                                      "LUES (@Address,@Operation,@Contract);\r\nSELECT Address,Operation,Contract,ID" +
+                                                      " FROM PersistentSubscribers WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Address",System.Data.SqlDbType.VarChar,0,System.Data.ParameterDirection.Input,0,0,"Address",System.Data.DataRowVersion.Current,false,null,"","",""));
             this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Operation",System.Data.SqlDbType.VarChar,0,System.Data.ParameterDirection.Input,0,0,"Operation",System.Data.DataRowVersion.Current,false,null,"","",""));
@@ -695,7 +691,7 @@ SELECT Address,Operation,Contract,ID FROM PersistentSubscribers WHERE (ID = @ID)
             this._commandCollection[2] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT Address,Operation,Contract,ID FROM dbo.PersistentSubscribers WHERE Addr" +
-                "ess=@address AND  Contract = @contract AND Operation = @operation";
+                                                     "ess=@address AND  Contract = @contract AND Operation = @operation";
             this._commandCollection[2].CommandType = System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@address",System.Data.SqlDbType.VarChar,500,System.Data.ParameterDirection.Input,0,0,"Address",System.Data.DataRowVersion.Current,false,null,"","",""));
             this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@contract",System.Data.SqlDbType.VarChar,500,System.Data.ParameterDirection.Input,0,0,"Contract",System.Data.DataRowVersion.Current,false,null,"","",""));
@@ -703,19 +699,19 @@ SELECT Address,Operation,Contract,ID FROM PersistentSubscribers WHERE (ID = @ID)
             this._commandCollection[3] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT Address,Operation,Contract,ID FROM dbo.PersistentSubscribers WHERE Addr" +
-                "ess=@address";
+                                                     "ess=@address";
             this._commandCollection[3].CommandType = System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@address",System.Data.SqlDbType.VarChar,500,System.Data.ParameterDirection.Input,0,0,"Address",System.Data.DataRowVersion.Current,false,null,"","",""));
             this._commandCollection[4] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT Address,Operation,Contract,ID FROM dbo.PersistentSubscribers WHERE Cont" +
-                "ract = @contract ";
+                                                     "ract = @contract ";
             this._commandCollection[4].CommandType = System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@contract",System.Data.SqlDbType.VarChar,500,System.Data.ParameterDirection.Input,0,0,"Contract",System.Data.DataRowVersion.Current,false,null,"","",""));
             this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "SELECT Address,Operation,Contract,ID FROM dbo.PersistentSubscribers WHERE Cont" +
-                "ract = @contract AND Operation = @operation";
+                                                     "ract = @contract AND Operation = @operation";
             this._commandCollection[5].CommandType = System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@contract",System.Data.SqlDbType.VarChar,500,System.Data.ParameterDirection.Input,0,0,"Contract",System.Data.DataRowVersion.Current,false,null,"","",""));
             this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@operation",System.Data.SqlDbType.VarChar,500,System.Data.ParameterDirection.Input,0,0,"Operation",System.Data.DataRowVersion.Current,false,null,"","",""));
@@ -851,7 +847,7 @@ SELECT Address,Operation,Contract,ID FROM PersistentSubscribers WHERE (ID = @ID)
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(System.Data.DataRow dataRow) {
             return this.Adapter.Update(new System.Data.DataRow[] {
-                        dataRow});
+                                                                     dataRow});
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -885,7 +881,7 @@ SELECT Address,Operation,Contract,ID FROM PersistentSubscribers WHERE (ID = @ID)
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_ID));
             System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if(((this.Adapter.DeleteCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
+                != System.Data.ConnectionState.Open)) {
                 this.Adapter.DeleteCommand.Connection.Open();
             }
             try {
@@ -923,7 +919,7 @@ SELECT Address,Operation,Contract,ID FROM PersistentSubscribers WHERE (ID = @ID)
             }
             System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if(((this.Adapter.InsertCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
+                != System.Data.ConnectionState.Open)) {
                 this.Adapter.InsertCommand.Connection.Open();
             }
             try {
@@ -981,7 +977,7 @@ SELECT Address,Operation,Contract,ID FROM PersistentSubscribers WHERE (ID = @ID)
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID));
             System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if(((this.Adapter.UpdateCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
+                != System.Data.ConnectionState.Open)) {
                 this.Adapter.UpdateCommand.Connection.Open();
             }
             try {
@@ -995,6 +991,6 @@ SELECT Address,Operation,Contract,ID FROM PersistentSubscribers WHERE (ID = @ID)
             }
         }
     }
-}
 
 #pragma warning restore 1591
+}

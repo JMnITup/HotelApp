@@ -4,8 +4,9 @@
 
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using ServiceModelEx.GenericInterceptor;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Context
 {
    public abstract class HeaderClientBase<T,H> : InterceptorClientBase<T> where T : class
    {

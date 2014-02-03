@@ -3,6 +3,7 @@
 //http://www.idesign.net
 
 using System.Runtime.Serialization;
+using ServiceModelEx.Context;
 
 namespace ServiceModelEx
 {

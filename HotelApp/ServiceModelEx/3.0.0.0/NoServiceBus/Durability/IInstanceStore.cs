@@ -4,7 +4,7 @@
 
 using System;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Durability
 {
    public interface IInstanceStore<ID,T> where ID : IEquatable<ID>
    {

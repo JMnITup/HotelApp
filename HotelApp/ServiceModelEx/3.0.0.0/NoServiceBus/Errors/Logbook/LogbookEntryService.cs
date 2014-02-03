@@ -3,11 +3,10 @@
 //http://www.idesign.net
 
 using System;
-using System.Threading;
 using System.Runtime.Serialization;
 using System.Reflection;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Errors.Logbook
 {
    [DataContract(Name = "LogbookEntry")]
    public struct LogbookEntryService

@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.ServiceModel;
 using System.Threading;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext.Affinity
 {
    public static class HostThreadAffinity 
    {

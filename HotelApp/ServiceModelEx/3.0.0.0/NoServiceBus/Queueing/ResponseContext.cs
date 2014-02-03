@@ -4,8 +4,9 @@
 
 using System;
 using System.Runtime.Serialization;
+using ServiceModelEx.Context;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Queueing
 {
    [DataContract]
    public class ResponseContext

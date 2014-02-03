@@ -5,7 +5,7 @@
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.PublishSubscribe
 {
    //For transient subscribers
    [ServiceContract]

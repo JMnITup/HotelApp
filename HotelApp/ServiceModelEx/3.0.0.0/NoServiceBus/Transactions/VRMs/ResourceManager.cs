@@ -9,8 +9,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Transactions;
 
-
-namespace ServiceModelEx
+namespace ServiceModelEx.Transactions.VRMs
 {
    public static class ResourceManager 
    {

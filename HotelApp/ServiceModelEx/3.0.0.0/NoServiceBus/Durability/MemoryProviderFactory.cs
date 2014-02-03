@@ -2,11 +2,10 @@
 //Questions? Comments? go to 
 //http://www.idesign.net
 
-
 using System;
 using System.ServiceModel.Persistence;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Durability
 {
    public abstract class MemoryProviderFactory : PersistenceProviderFactory
    {

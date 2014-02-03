@@ -11,7 +11,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Xml;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Data
 {
   public class GenericResolver : DataContractResolver {
     //private static readonly string[] m_KnownUnmanagedContainers = { "QTAgent32.exe" }; 

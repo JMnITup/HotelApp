@@ -10,9 +10,9 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Discovery;
+using ServiceModelEx.Hosting;
 
-
-namespace ServiceModelEx
+namespace ServiceModelEx.Discovery
 {
    public static class DiscoveryFactory
    {

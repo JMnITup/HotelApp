@@ -11,8 +11,11 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
+using ServiceModelEx.Data;
+using ServiceModelEx.Errors;
+using ServiceModelEx.Queueing;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Hosting
 {
    public class ServiceHost<T> : ServiceHost
    {

@@ -7,8 +7,9 @@ using System.Diagnostics;
 using System.Reflection;
 using System.ServiceModel;
 using System.Threading;
+using ServiceModelEx.Extensions;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.PublishSubscribe
 {
    public abstract class PublishService<T> where T : class
    {

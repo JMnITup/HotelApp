@@ -7,7 +7,7 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Errors
 {
    public class CallbackErrorHandlerBehaviorAttribute : ErrorHandlerBehaviorAttribute,IEndpointBehavior
    {

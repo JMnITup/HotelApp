@@ -5,8 +5,9 @@
 using System;
 using System.Diagnostics;
 using System.ServiceModel;
+using ServiceModelEx.Context;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Queueing
 {
    public abstract class ClientResponseBase<T> : HeaderClientBase<T,ResponseContext> where T : class
    {

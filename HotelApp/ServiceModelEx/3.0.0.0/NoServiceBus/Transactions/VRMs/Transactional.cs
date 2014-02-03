@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Transactions;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Transactions.VRMs
 {
    public class Transactional<T> : ISinglePhaseNotification 
    {

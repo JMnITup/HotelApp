@@ -13,8 +13,8 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Discovery;
 using System.Threading;
-   
-namespace ServiceModelEx
+
+namespace ServiceModelEx.Discovery
 {
    public static class DiscoveryHelper
    {

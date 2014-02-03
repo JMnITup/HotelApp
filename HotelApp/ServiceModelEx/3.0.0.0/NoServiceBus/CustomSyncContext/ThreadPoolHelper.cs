@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.ServiceModel.Dispatcher;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.CustomSyncContext
 {
    public static class ThreadPoolHelper 
    {

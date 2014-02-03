@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Extensions
 {
    public static class Collection
    {

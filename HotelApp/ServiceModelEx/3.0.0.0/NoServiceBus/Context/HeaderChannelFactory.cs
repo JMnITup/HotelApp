@@ -4,8 +4,9 @@
 
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using ServiceModelEx.GenericInterceptor;
 
-namespace ServiceModelEx
+namespace ServiceModelEx.Context
 {
    public class HeaderChannelFactory<T,H> : InterceptorChannelFactory<T> where T : class
    {

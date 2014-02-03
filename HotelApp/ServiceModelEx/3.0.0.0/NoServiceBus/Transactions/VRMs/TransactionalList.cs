@@ -4,10 +4,9 @@
 
 using System;
 using System.Collections.Generic;
-
 using System.Collections.ObjectModel;
 
-namespace ServiceModelEx.Transactional
+namespace ServiceModelEx.Transactions.VRMs
 {
    public class TransactionalList<T> : TransactionalCollection<List<T>,T>,IList<T>
    {

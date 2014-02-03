@@ -6,8 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-
-namespace ServiceModelEx.Transactional
+namespace ServiceModelEx.Transactions.VRMs
 {
    public class TransactionalStack<T> : TransactionalCollection<Stack<T>,T>,ICollection
    {

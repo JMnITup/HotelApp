@@ -37,6 +37,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HelixToolkit.Wpf, Version=2014.1.1.1, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\HelixToolkit.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -97,12 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MyModel.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\helixtoolkit_81b408226ea0\Source\HelixToolkit.Wpf\HelixToolkit.Wpf.csproj">
-      <Project>{3f3b4548-a9db-4874-86f7-e7c4fec8a351}</Project>
-      <Name>HelixToolkit.Wpf</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Voxel\" />

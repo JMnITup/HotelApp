@@ -4,6 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Xml.Serialization;
@@ -29,21 +30,31 @@ namespace WpfApplication1
                 if (obj != null) Colour = (Color)obj;
             }
         }
+        
+        [XmlAttribute("Scale")]
+        public string XmlScale {
+            get { return Scale.ToString(); }
+            set { Scale = Convert.ToDouble(value); }
+        }
 
         [XmlIgnore]
         public Point3D Position { get; set; }
 
         [XmlIgnore]
         public Color Colour { get; set; }
+        
+        [XmlIgnore]
+        public double Scale { get; set; }
 
         public Voxel()
         {
         }
 
-        public Voxel(Point3D position, Color colour)
+        public Voxel(Point3D position, Color colour, double scale = 1.00)
         {
             Position = position;
             Colour = colour;
+            Scale = scale;
         }
     }
 }

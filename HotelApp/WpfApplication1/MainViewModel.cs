@@ -108,12 +108,12 @@ namespace WpfApplication1
 
         private static GeometryModel3D CreateVoxelModel3D(Voxel v)
         {
-            const double size = 0.98;
+            double size = 0.98 * v.Scale;
             var m = new GeometryModel3D();
             var mb = new MeshBuilder();
             mb.AddBox(new Point3D(0, 0, 0), size, size, size);
             m.Geometry = mb.ToMesh();
-            m.Material = MaterialHelper.CreateMaterial(v.Colour);
+            m.Material = MaterialHelper.CreateMaterial(v.Colour, v.Scale*.5);
             m.Transform = new TranslateTransform3D(v.Position.X, v.Position.Y, v.Position.Z);
             return m;
         }
@@ -146,9 +146,9 @@ namespace WpfApplication1
         /// Adds a voxel at the specified position.
         /// </summary>
         /// <param name="p">The p.</param>
-        public void AddVoxel(Point3D p)
+        public void AddVoxel(Point3D p, double scale = 1.00)
         {
-            Voxels.Add(new Voxel(p, CurrentColor));
+            Voxels.Add(new Voxel(p, CurrentColor, scale));
             UpdateModel();
         }
 

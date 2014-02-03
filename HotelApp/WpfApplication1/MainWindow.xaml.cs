@@ -5,8 +5,10 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
@@ -15,6 +17,8 @@ using HotelCorp.HotelApp.Services.Engines;
 using HotelCorp.HotelApp.Services.Managers;
 using JamesMeyer.IocContainer;
 using ServiceModelEx.Hosting;
+using Guest = HotelCorp.HotelApp.Services.Managers.Guest;
+using Room = HotelCorp.HotelApp.Services.Managers.Room;
 
 namespace WpfApplication1
 {
@@ -84,7 +88,7 @@ namespace WpfApplication1
 
         private void view1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            bool shift = (Keyboard.IsKeyDown(Key.LeftShift));
+            /*bool shift = (Keyboard.IsKeyDown(Key.LeftShift));
             var p = e.GetPosition(view1);
 
             Vector3D n;
@@ -112,7 +116,7 @@ namespace WpfApplication1
                 }
             }
             UpdatePreview();
-            //CaptureMouse();
+            //CaptureMouse();*/
         }
 
         private void view1_MouseMove(object sender, MouseEventArgs e)
@@ -126,16 +130,16 @@ namespace WpfApplication1
             bool shift = (Keyboard.IsKeyDown(Key.LeftShift));
             Vector3D n;
             var source = FindSource(p, out n);
-            if (shift)
-            {
+            //if (shift)
+            //{
                 vm.PreviewVoxel(null);
                 vm.HighlightVoxel(source);
-            }
-            else
-            {
-                vm.PreviewVoxel(source, n);
-                vm.HighlightVoxel(null);
-            }
+            //}
+            //else
+            //{
+            //    vm.PreviewVoxel(source, n);
+            //    vm.HighlightVoxel(null);
+            //}
 
         }
 
@@ -169,15 +173,44 @@ namespace WpfApplication1
                 y = UInt32.Parse(GenY.Text);
                 z = UInt32.Parse(GenZ.Text);
                 var hotelMap = svc.GenerateBasicHotel(x, y, z);
-                vm.Clear();
-                hotelMap.ForEach(room =>
-                                    {
-                                        if (room.Guest == null) {
-                                            vm.AddVoxel(room.Location);
-                                        }
-                                    });
+                RebuildMap(hotelMap);
             }
             UpdatePreview();
         }
+        
+        private void CheckinGuest(object sender, RoutedEventArgs e) {
+            // TODO: update this to actually use the service
+            var resolver = new InterfaceResolver();
+            resolver.Register<IRoomAccess, RoomAccess>();
+            resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>();
+            resolver.Register<IReservingEngine, ReservingEngine>();
+
+            using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
+                // TODO: update this
+                Guest guest = new Guest("Bob", "Marley");
+                svc.CheckinGuest(guest);
+            }
+            RebuildMap();
+        }
+
+        private void RebuildMap(List<Room> roomList = null ) {
+            if (roomList == null) {
+                var resolver = new InterfaceResolver();
+                resolver.Register<IRoomAccess, RoomAccess>();
+                resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>();
+                resolver.Register<IReservingEngine, ReservingEngine>();
+
+                using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
+                    roomList = svc.GetAllRooms();
+                }
+            }
+            vm.Clear();
+            roomList.ForEach(room => {
+                                    double scale = room.Guest == null ? 0.2 : 1;
+                                    vm.AddVoxel(room.Location, scale);
+                                });
+            UpdatePreview();
+        }
+
     }
 }

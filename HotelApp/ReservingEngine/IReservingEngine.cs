@@ -9,6 +9,7 @@ using HotelCorp.HotelApp.Services.Access;
 namespace HotelCorp.HotelApp.Services.Engines {
     [ServiceContract]
     public interface IReservingEngine : IDisposable {
+        [OperationContract]
         Room PerformAutoCheckin(Guest newGuest);
     }
 }

@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.ServiceModel;
 using System.Windows.Media.Media3D;
 using HotelCorp.HotelApp.Services.Access;
+using HotelCorp.HotelApp.Services.Engines;
 using JamesMeyer.IocContainer;
 using ServiceModelEx.Hosting;
 
 namespace HotelCorp.HotelApp.Services.Managers {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "OccupancyManager_Wpf" in both code and config file together.
+
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Reentrant, UseSynchronizationContext = false)]
     public class OccupancyManager_Wpf : IOccupancyManager_Wpf {
         private readonly InterfaceResolver _ioc = new InterfaceResolver();
 
         public OccupancyManager_Wpf() {
             _ioc.Register<IRoomAccess, RoomAccess>().AsDelegate(InProcFactory.CreateInstance<RoomAccess, IRoomAccess>);
+            _ioc.Register<IReservingEngine, ReservingEngine>().AsDelegate(InProcFactory.CreateInstance<ReservingEngine, IReservingEngine>);
         }
 
         public OccupancyManager_Wpf(InterfaceResolver resolver) {
@@ -30,8 +34,12 @@ namespace HotelCorp.HotelApp.Services.Managers {
             return GetAllRooms();
         }
 
-        public void CheckingGuest(Guest guest, string roomNumber) {
-            throw new NotImplementedException();
+        public void CheckinGuest(Guest guest, string roomNumber = null) {
+            if (roomNumber == null) {
+                using (var reservingEngine = _ioc.Resolve<IReservingEngine>()) {
+                    var room = reservingEngine.PerformAutoCheckin(Repackage.Guest(guest));
+                }
+            }
         }
 
         public void CheckoutGuest(Guest guest, string roomNumber) {
@@ -43,14 +51,21 @@ namespace HotelCorp.HotelApp.Services.Managers {
         }
 
         public List<Room> GetAllRooms() {
-            List<Room> list;
             using (var roomAccessService = _ioc.Resolve<IRoomAccess>()) {
                 roomAccessService.GetRoomList();
                 var accessRoomList = roomAccessService.GetRoomList();
-                list = accessRoomList.Select(room => (Room)room).ToList();
+                return Repackage.RoomList(accessRoomList);
             }
-            return list;
         }
+
+        #endregion
+
+        #region Implementation of IDisposable
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose() {}
 
         #endregion
     }

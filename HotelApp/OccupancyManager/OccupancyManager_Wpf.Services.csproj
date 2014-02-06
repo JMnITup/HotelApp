@@ -61,6 +61,7 @@
     <Compile Include="IOccupancyManager_Wpf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OccupancyManager_Wpf.cs" />
+    <Compile Include="Repackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\IocContainer\IocContainer.csproj">
       <Project>{89E3A50F-A4BC-4D0B-8A3B-1E22C80799EF}</Project>
       <Name>IocContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReservingEngine\ReservingEngine.Services.csproj">
+      <Project>{D6465171-E0DE-4C24-AEAE-76F7A15359EA}</Project>
+      <Name>ReservingEngine.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoomAccess.Service\RoomAccess.Services.csproj">
       <Project>{15B3E0D2-6217-493A-A690-158C497F5318}</Project>

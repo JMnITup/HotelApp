@@ -3,13 +3,13 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.ServiceModel;
 using System.Windows.Media.Media3D;
 using JamesMeyer.IocContainer;
 
 #endregion
 
 namespace HotelCorp.HotelApp.Services.Access {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RoomAccess" in both code and config file together.
     public class RoomAccess : IRoomAccess {
         /// <summary>
         ///     Represents an underlying data store.  This could be replaced with any store implementation

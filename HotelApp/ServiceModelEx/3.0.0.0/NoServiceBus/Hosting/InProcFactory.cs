@@ -34,7 +34,7 @@ namespace ServiceModelEx.Hosting
          }
          catch
          {
-             binding = new NetNamedPipeContextBinding();
+            binding = new NetNamedPipeContextBinding();
          }
 
          binding.TransactionFlow = true;

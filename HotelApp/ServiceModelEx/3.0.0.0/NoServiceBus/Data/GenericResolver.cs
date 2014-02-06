@@ -13,13 +13,12 @@ using System.Xml;
 
 namespace ServiceModelEx.Data
 {
-  public class GenericResolver : DataContractResolver {
-    //private static readonly string[] m_KnownUnmanagedContainers = { "QTAgent32.exe" }; 
-    
-    private const string DefaultNamespace = "global";
+   public class GenericResolver : DataContractResolver
+   {
+      const string DefaultNamespace = "global";
 
-    private readonly Dictionary<Type, Tuple<string, string>> m_TypeToNames;
-    private readonly Dictionary<string, Dictionary<string, Type>> m_NamesToType;
+      readonly Dictionary<Type,Tuple<string,string>> m_TypeToNames;
+      readonly Dictionary<string,Dictionary<string,Type>> m_NamesToType;
 
       public Type[] KnownTypes
       {

@@ -131,14 +131,18 @@ namespace ServiceModelEx.Data
                types.AddRange(typesInEntryAssembly);
             }
          }
+         else if (GenericResolverInstaller.IsWebProcess())
+         {
+           Debug.Assert(GenericResolverInstaller.IsWebProcess());
+           foreach (Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
+           {
+             Type[] typesInWebAssembly = GetTypes(assembly, false);
+             types.AddRange(typesInWebAssembly);
+           }
+         }
          else
          {
-            Debug.Assert(GenericResolverInstaller.IsWebProcess());
-            foreach(Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
-            {
-               Type[] typesInWebAssembly = GetTypes(assembly,false);
-               types.AddRange(typesInWebAssembly);
-            }
+           //Debug.Assert(m_KnownUnmanagedContainers.Contains(AppDomain.CurrentDomain.SetupInformation.ApplicationName) || AppDomain.CurrentDomain.SetupInformation.ApplicationName.Contains("Tests"), "Unknown non-managed code container: " + AppDomain.CurrentDomain.SetupInformation.ApplicationName);
          }
          return types.ToArray();
       }
@@ -159,13 +163,17 @@ namespace ServiceModelEx.Data
                assemblies.AddRange(GetCustomReferencedAssemblies(Assembly.GetEntryAssembly()));
             }
          }
+         else if (GenericResolverInstaller.IsWebProcess())
+         {
+           Debug.Assert(GenericResolverInstaller.IsWebProcess());
+           foreach (Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
+           {
+             assemblies.AddRange(GetCustomReferencedAssemblies(assembly));
+           }
+         }
          else
          {
-            Debug.Assert(GenericResolverInstaller.IsWebProcess());
-            foreach(Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
-            {
-               assemblies.AddRange(GetCustomReferencedAssemblies(assembly));
-            }
+           //Debug.Assert(m_KnownUnmanagedContainers.Contains(AppDomain.CurrentDomain.SetupInformation.ApplicationName) || AppDomain.CurrentDomain.SetupInformation.ApplicationName.Contains("Tests") , "Unknown non-managed code container: " + AppDomain.CurrentDomain.SetupInformation.ApplicationName);
          }
          return assemblies.ToArray();         
       }

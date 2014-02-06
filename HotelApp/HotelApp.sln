@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApplication", "WpfApplication1\HotelApplication.csproj", "{5C0B2662-964F-47A8-A3D6-5E067D38D013}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApplication", "HotelApplication\HotelApplication.csproj", "{5C0B2662-964F-47A8-A3D6-5E067D38D013}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Documentation", ".Documentation", "{0EA68E19-BC06-4A84-854F-9E3FEC9FF4B4}"
 	ProjectSection(SolutionItems) = preProject

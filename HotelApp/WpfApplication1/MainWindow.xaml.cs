@@ -168,6 +168,7 @@ namespace HotelCorp.HotelApp
                 var hotelMap = svc.GenerateBasicHotel(x, y, z);
                 RebuildMap(hotelMap);
             }
+            CheckinBtn.IsEnabled = true;
             UpdatePreview();
         }
         
@@ -176,7 +177,11 @@ namespace HotelCorp.HotelApp
             using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                 // TODO: update this
                 Guest guest = new Guest("Bob", "Marley");
-                svc.CheckinGuest(guest);
+                try {
+                    svc.CheckinGuest(guest);
+                } catch (FaultException ex) {
+                    System.Windows.MessageBox.Show(ex.Message);
+                }
             }
             RebuildMap();
         }

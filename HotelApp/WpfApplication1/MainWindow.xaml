@@ -8,10 +8,10 @@
             <t:GridLinesVisual3D Center="-0.5,-0.5,-0.5" Width="20" Length="20" MinorDistance="1" MajorDistance="10" Thickness="0.04" Fill="Black"/>
             <ModelVisual3D Content="{Binding Model}"/>
         </t:HelixViewport3D>
-        <TextBox x:Name="GenX" HorizontalAlignment="Left" Height="23" Margin="573,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="46"/>
+        <TextBox x:Name="GenX" HorizontalAlignment="Left" Height="23" Margin="573,51,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="46"/>
         <Button x:Name="GenBtn" Content="Generate" HorizontalAlignment="Left" Margin="726,52,0,0" VerticalAlignment="Top" Width="75" Click="GenerateNewHotel"/>
-        <TextBox x:Name="GenY" HorizontalAlignment="Left" Height="23" Margin="624,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="46"/>
-        <TextBox x:Name="GenZ" HorizontalAlignment="Left" Height="23" Margin="675,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="46"/>
-        <Button x:Name="CheckinBtn" Content="Checkin" HorizontalAlignment="Left" Margin="624,112,0,0" VerticalAlignment="Top" Width="75" Click="CheckinGuest"/>
+        <TextBox x:Name="GenY" HorizontalAlignment="Left" Height="23" Margin="624,51,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="46"/>
+        <TextBox x:Name="GenZ" HorizontalAlignment="Left" Height="23" Margin="675,51,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="46"/>
+        <Button x:Name="CheckinBtn" Content="Checkin" HorizontalAlignment="Left" Margin="624,112,0,0" VerticalAlignment="Top" Width="75" Click="CheckinGuest" IsEnabled="False"/>
     </Grid>
 </Window>

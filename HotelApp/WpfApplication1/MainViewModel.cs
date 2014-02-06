@@ -56,7 +56,7 @@ namespace HotelCorp.HotelApp
             Highlighted = new List<Model3D>();
             ModelToVoxel = new Dictionary<Model3D, Voxel>();
             OriginalMaterial = new Dictionary<Model3D, Material>();
-            Voxels.Add(new Voxel(new Point3D(0, 0, 0), CurrentColor));
+            //Voxels.Add(new Voxel(new Point3D(0, 0, 0), CurrentColor));
             UpdateModel();
         }
 

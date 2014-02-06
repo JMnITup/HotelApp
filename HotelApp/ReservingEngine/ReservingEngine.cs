@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 using System.Transactions;
 using System.Windows.Media.Media3D;
 using HotelCorp.HotelApp.Services.Access;
@@ -43,7 +44,7 @@ namespace HotelCorp.HotelApp.Services.Engines {
                 using (var roomAccess = _ioc.Resolve<IRoomAccess>()) {
                     List<Room> emptyList = roomAccess.GetAllEmptyRooms();
                     if (emptyList.Count <= 0) {
-                        throw new Exception("No vacancy, cannot checkin guest");
+                        throw new FaultException("No vacancy, cannot checkin guest");
                     }
 
                     List<Room> filledList = roomAccess.GetAllAssignedRooms();

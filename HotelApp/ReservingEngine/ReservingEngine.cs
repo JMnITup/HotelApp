@@ -58,7 +58,6 @@ namespace HotelCorp.HotelApp.Services.Engines {
                     return roomAccess.AssignGuestToRoom(newGuest, bestRoom.RoomNumber);
                 }
             }
-            return bestRoom;
         }
 
         private Room GetPreferredInitialRoom(List<Room> roomList) {

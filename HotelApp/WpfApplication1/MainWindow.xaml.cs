@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
@@ -34,8 +35,9 @@ namespace HotelCorp.HotelApp {
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
-            view1.ZoomExtents(1000);
+            //view1.ZoomExtents(1000);
             view1.Focus();
+            GenerateNewHotel(sender, e);
         }
 
         protected override void OnClosed(EventArgs e) {
@@ -112,9 +114,14 @@ namespace HotelCorp.HotelApp {
         private void GenerateNewHotel(object sender, RoutedEventArgs e) {
             using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                 uint x, y, z;
-                x = UInt32.Parse(GenX.Text);
-                y = UInt32.Parse(GenY.Text);
-                z = UInt32.Parse(GenZ.Text);
+                try {
+                    x = UInt32.Parse(GenX.Text);
+                    y = UInt32.Parse(GenY.Text);
+                    z = UInt32.Parse(GenZ.Text);
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
                 List<Room> hotelMap = svc.GenerateBasicHotel(x, y, z);
                 double avgx = 0;
                 double avgy = 0;
@@ -128,7 +135,8 @@ namespace HotelCorp.HotelApp {
                 avgy = avgy/hotelMap.Count;
                 avgz = avgz/hotelMap.Count;
                 RebuildMap(hotelMap);
-                view1.LookAt(new Point3D(avgx, avgy, avgz));
+                view1.Camera.Position = new Point3D(0, 10, 10);
+                view1.LookAt(new Point3D(avgx, avgy, avgz), 18, 0);
             }
             CheckinBtn.IsEnabled = true;
             CheckinRandomBtn.IsEnabled = true;
@@ -144,7 +152,7 @@ namespace HotelCorp.HotelApp {
             vm.Clear();
             roomList.ForEach(room =>
                                  {
-                                     double scale = room.Guest == null ? 0.2 : 1;
+                                     double scale = room.Guest == null ? 0.3 : 1;
                                      vm.AddVoxel(room.Location, scale, room.Guest, room.RoomNumber);
                                  });
             UpdatePreview();
@@ -189,5 +197,7 @@ namespace HotelCorp.HotelApp {
             string randomstring = builder.ToString();
             return randomstring;
         }
+
+        private void GenX_TextChanged(object sender, TextChangedEventArgs e) {}
     }
 }

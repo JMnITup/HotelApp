@@ -235,56 +235,5 @@ namespace HotelCorp.HotelApp.Services.Engines.Tests {
             Assert.AreEqual("5,5,1", x.Location.ToString());
         }
 
-        public class MockRoomAccess : IRoomAccess {
-            #region Implementation of IDisposable
-
-            /// <summary>
-            ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-            /// </summary>
-            public void Dispose() {}
-
-            #endregion
-
-            #region Implementation of IRoomAccess
-
-            public void GenerateBasicHotel(uint xSize, uint ySize, uint zSize) {
-                throw new NotImplementedException();
-            }
-
-            public List<string> GetRoomNumbers() {
-                throw new NotImplementedException();
-            }
-
-            public void UnassignGuestFromRoom(Guest guest, string roomNumber) {
-                throw new NotImplementedException();
-            }
-
-            public List<Guest> GetGuestList() {
-                throw new NotImplementedException();
-            }
-
-            public List<Room> GetAllEmptyRooms() {
-                throw new NotImplementedException();
-            }
-
-            public List<Room> GetAllAssignedRooms() {
-                return new List<Room>
-                           {
-                               new Room("1-1-1", new Point3D(1, 1, 1)),
-                               new Room("1-1-2", new Point3D(1, 1, 2)),
-                               new Room("3-1-1", new Point3D(3, 1, 1)),
-                           };
-            }
-
-            public List<Room> GetRoomList() {
-                throw new NotImplementedException();
-            }
-
-            public void AssignGuestToRoom(Guest guest, string roomNumber) {
-                throw new NotImplementedException();
-            }
-
-            #endregion
-        }
     }
 }

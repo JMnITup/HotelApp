@@ -12,27 +12,41 @@
                                  Thickness="0.04" Fill="#02000000" />
             <ModelVisual3D Content="{Binding Model}" />
         </t:HelixViewport3D>
-        <TextBox x:Name="GenX" HorizontalAlignment="Left" Height="23" Margin="573,51,0,0" TextWrapping="Wrap" Text="3"
-                 VerticalAlignment="Top" Width="46" />
-        <Button x:Name="GenBtn" Content="Generate" HorizontalAlignment="Left" Margin="726,52,0,0"
+        <TextBox x:Name="GenX" HorizontalAlignment="Left" Height="23" Margin="573,140,0,0" TextWrapping="Wrap"
+                 Text="10"
+                 VerticalAlignment="Top" Width="46" TextChanged="GenX_TextChanged" />
+        <Button x:Name="GenBtn" Content="Generate" HorizontalAlignment="Left" Margin="726,141,0,0"
                 VerticalAlignment="Top" Width="75" Click="GenerateNewHotel" />
-        <TextBox x:Name="GenY" HorizontalAlignment="Left" Height="23" Margin="624,51,0,0" TextWrapping="Wrap" Text="3"
+        <TextBox x:Name="GenY" HorizontalAlignment="Left" Height="23" Margin="624,140,0,0" TextWrapping="Wrap"
+                 Text="10"
                  VerticalAlignment="Top" Width="46" />
-        <TextBox x:Name="GenZ" HorizontalAlignment="Left" Height="23" Margin="675,51,0,0" TextWrapping="Wrap" Text="3"
+        <TextBox x:Name="GenZ" HorizontalAlignment="Left" Height="23" Margin="675,140,0,0" TextWrapping="Wrap" Text="1"
                  VerticalAlignment="Top" Width="46" />
-        <Button x:Name="CheckinBtn" Content="Checkin" HorizontalAlignment="Left" Margin="596,146,0,0"
+        <Button x:Name="CheckinBtn" Content="Checkin" HorizontalAlignment="Left" Margin="596,216,0,0"
                 VerticalAlignment="Top" Width="75" Click="CheckinGuestClick" IsEnabled="False" />
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="596,118,0,0" TextWrapping="Wrap"
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="596,188,0,0" TextWrapping="Wrap"
                  VerticalAlignment="Top" Width="75" />
-        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="23" Margin="676,118,0,0" TextWrapping="Wrap"
+        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="23" Margin="676,188,0,0" TextWrapping="Wrap"
                  VerticalAlignment="Top" Width="75" />
-        <Label Content="FirstName" HorizontalAlignment="Left" Margin="596,92,0,0" VerticalAlignment="Top" />
-        <Label Content="LastName" HorizontalAlignment="Left" Margin="687,92,0,0" VerticalAlignment="Top" />
-        <TextBlock x:Name="tbInformation" HorizontalAlignment="Left" Margin="596,288,0,0" TextWrapping="Wrap"
+        <Label Content="FirstName" HorizontalAlignment="Left" Margin="596,166,0,0" VerticalAlignment="Top" />
+        <Label Content="LastName" HorizontalAlignment="Left" Margin="687,166,0,0" VerticalAlignment="Top" />
+        <TextBlock x:Name="tbInformation" HorizontalAlignment="Left" Margin="595,298,0,0" TextWrapping="Wrap"
                    VerticalAlignment="Top" Height="141" Width="191" />
-        <Button x:Name="CheckinRandomBtn" Content="Checkin Random" HorizontalAlignment="Left" Margin="676,146,0,0"
-                VerticalAlignment="Top" Width="75" Click="CheckinGuestRandomClick" IsEnabled="False" />
-        <TextBlock x:Name="lblRoomDetails" HorizontalAlignment="Left" Margin="596,173,0,0" TextWrapping="Wrap"
-                   VerticalAlignment="Top" Height="110" Width="191" />
+        <Button x:Name="CheckinRandomBtn" Content="Checkin Random" HorizontalAlignment="Left" Margin="676,216,0,0"
+                VerticalAlignment="Top" Width="110" Click="CheckinGuestRandomClick" IsEnabled="False" />
+        <TextBlock x:Name="lblRoomDetails" HorizontalAlignment="Left" Margin="595,241,0,0" TextWrapping="Wrap"
+                   VerticalAlignment="Top" Height="52" Width="191" />
+        <TextBlock HorizontalAlignment="Left" Margin="573,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                   Height="135" Width="240">
+            <Run
+                Text="Left click to check out, mouse over to view details, click Generate to create new hotel of specified size" />
+            <LineBreak />
+            <Run
+                Text="Checkin random creates random guest, checkin creates specified guest" />
+            <LineBreak />
+            <Run
+                Text="Right-drag to rotate, center button to pan" />
+            <LineBreak /><Run Text="Mouse wheel zooms" />
+        </TextBlock>
     </Grid>
 </Window>

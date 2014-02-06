@@ -13,13 +13,12 @@ using System.Xml;
 
 namespace ServiceModelEx.Data
 {
-  public class GenericResolver : DataContractResolver {
-    //private static readonly string[] m_KnownUnmanagedContainers = { "QTAgent32.exe" }; 
-    
-    private const string DefaultNamespace = "global";
+   public class GenericResolver : DataContractResolver
+   {
+      const string DefaultNamespace = "global";
 
-    private readonly Dictionary<Type, Tuple<string, string>> m_TypeToNames;
-    private readonly Dictionary<string, Dictionary<string, Type>> m_NamesToType;
+      readonly Dictionary<Type,Tuple<string,string>> m_TypeToNames;
+      readonly Dictionary<string,Dictionary<string,Type>> m_NamesToType;
 
       public Type[] KnownTypes
       {
@@ -132,18 +131,14 @@ namespace ServiceModelEx.Data
                types.AddRange(typesInEntryAssembly);
             }
          }
-         else if (GenericResolverInstaller.IsWebProcess())
-         {
-           Debug.Assert(GenericResolverInstaller.IsWebProcess());
-           foreach (Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
-           {
-             Type[] typesInWebAssembly = GetTypes(assembly, false);
-             types.AddRange(typesInWebAssembly);
-           }
-         }
          else
          {
-           //Debug.Assert(m_KnownUnmanagedContainers.Contains(AppDomain.CurrentDomain.SetupInformation.ApplicationName) || AppDomain.CurrentDomain.SetupInformation.ApplicationName.Contains("Tests"), "Unknown non-managed code container: " + AppDomain.CurrentDomain.SetupInformation.ApplicationName);
+            Debug.Assert(GenericResolverInstaller.IsWebProcess());
+            foreach(Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
+            {
+               Type[] typesInWebAssembly = GetTypes(assembly,false);
+               types.AddRange(typesInWebAssembly);
+            }
          }
          return types.ToArray();
       }
@@ -164,17 +159,13 @@ namespace ServiceModelEx.Data
                assemblies.AddRange(GetCustomReferencedAssemblies(Assembly.GetEntryAssembly()));
             }
          }
-         else if (GenericResolverInstaller.IsWebProcess())
-         {
-           Debug.Assert(GenericResolverInstaller.IsWebProcess());
-           foreach (Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
-           {
-             assemblies.AddRange(GetCustomReferencedAssemblies(assembly));
-           }
-         }
          else
          {
-           //Debug.Assert(m_KnownUnmanagedContainers.Contains(AppDomain.CurrentDomain.SetupInformation.ApplicationName) || AppDomain.CurrentDomain.SetupInformation.ApplicationName.Contains("Tests") , "Unknown non-managed code container: " + AppDomain.CurrentDomain.SetupInformation.ApplicationName);
+            Debug.Assert(GenericResolverInstaller.IsWebProcess());
+            foreach(Assembly assembly in GenericResolverInstaller.GetWebAssemblies())
+            {
+               assemblies.AddRange(GetCustomReferencedAssemblies(assembly));
+            }
          }
          return assemblies.ToArray();         
       }

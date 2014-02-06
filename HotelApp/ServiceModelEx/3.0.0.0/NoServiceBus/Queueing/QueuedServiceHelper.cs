@@ -81,13 +81,10 @@ namespace ServiceModelEx.Queueing
       {
          string queue = String.Empty;
 
-         Debug.Assert(uri.Segments.Length == 3 || uri.Segments.Length == 2 || uri.Segments.Length == 4); //Support 4 segents for WAS based hosting queue names
+         Debug.Assert(uri.Segments.Length == 3 || uri.Segments.Length == 2);
          if(uri.Segments[1] == @"private/")
          {
-            if (uri.Segments.Length == 4) //Support for 4 uri segments
-                queue = @".\private$\" + uri.Segments[2] + uri.Segments[3];
-            else
-                queue = @".\private$\" + uri.Segments[2];
+            queue = @".\private$\" + uri.Segments[2];
          }
          else
          {

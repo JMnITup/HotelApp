@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.ServiceModel;
 using System.Windows.Media.Media3D;
 using HotelCorp.HotelApp.Services.Access;
 using HotelCorp.HotelApp.Services.Engines;
@@ -10,7 +11,8 @@ using JamesMeyer.IocContainer;
 using ServiceModelEx.Hosting;
 
 namespace HotelCorp.HotelApp.Services.Managers {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "OccupancyManager_Wpf" in both code and config file together.
+
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Reentrant, UseSynchronizationContext = false)]
     public class OccupancyManager_Wpf : IOccupancyManager_Wpf {
         private readonly InterfaceResolver _ioc = new InterfaceResolver();
 

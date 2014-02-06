@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
@@ -14,6 +15,7 @@ using HotelCorp.HotelApp.Services.Access;
 using HotelCorp.HotelApp.Services.Engines;
 using HotelCorp.HotelApp.Services.Managers;
 using JamesMeyer.IocContainer;
+using ServiceModelEx.Hosting;
 using Guest = HotelCorp.HotelApp.Services.Managers.Guest;
 using Room = HotelCorp.HotelApp.Services.Managers.Room;
 
@@ -25,15 +27,14 @@ namespace HotelCorp.HotelApp
     public partial class MainWindow : Window
     {
         private readonly MainViewModel vm = new MainViewModel();
+        private InterfaceResolver resolver = new InterfaceResolver();
 
         public MainWindow()
         {
             InitializeComponent();
-            //vm.TryLoad("MyModel.xml");
-            vm.AddVoxel(new Point3D(0, 0, 0));
-            vm.AddVoxel(new Point3D(0, 0, 1));
-            vm.AddVoxel(new Point3D(0, 1, 0));
-            vm.AddVoxel(new Point3D(1, 0, 0));
+
+            resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>().AsDelegate(InProcFactory.CreateInstance<OccupancyManager_Wpf, IOccupancyManager_Wpf>);
+            
             DataContext = vm;
             Loaded += new RoutedEventHandler(MainWindow_Loaded);
         }
@@ -158,13 +159,8 @@ namespace HotelCorp.HotelApp
         }
 
         private void GenerateNewHotel(object sender, RoutedEventArgs e) {
-            // TODO: update this to actually use the service
-            var resolver = new InterfaceResolver();
-            resolver.Register<IRoomAccess, RoomAccess>();
-            resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>();
-            resolver.Register<IReservingEngine, ReservingEngine>();
 
-            using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {//InProcFactory.CreateInstance<OccupancyManager_Wpf, IOccupancyManager_Wpf>()) {
+            using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                 uint x, y, z;
                 x = UInt32.Parse(GenX.Text);
                 y = UInt32.Parse(GenY.Text);
@@ -176,11 +172,6 @@ namespace HotelCorp.HotelApp
         }
         
         private void CheckinGuest(object sender, RoutedEventArgs e) {
-            // TODO: update this to actually use the service
-            var resolver = new InterfaceResolver();
-            resolver.Register<IRoomAccess, RoomAccess>();
-            resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>();
-            resolver.Register<IReservingEngine, ReservingEngine>();
 
             using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                 // TODO: update this
@@ -192,10 +183,6 @@ namespace HotelCorp.HotelApp
 
         private void RebuildMap(List<Room> roomList = null ) {
             if (roomList == null) {
-                var resolver = new InterfaceResolver();
-                resolver.Register<IRoomAccess, RoomAccess>();
-                resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>();
-                resolver.Register<IReservingEngine, ReservingEngine>();
 
                 using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                     roomList = svc.GetAllRooms();

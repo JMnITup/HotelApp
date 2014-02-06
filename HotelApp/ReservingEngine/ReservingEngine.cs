@@ -12,14 +12,14 @@ using ServiceModelEx.Hosting;
 
 namespace HotelCorp.HotelApp.Services.Engines {
     public class ReservingEngine : IReservingEngine {
-        public InterfaceResolver Ioc = new InterfaceResolver();
+        private readonly InterfaceResolver _ioc = new InterfaceResolver();
 
         public ReservingEngine() {
-            Ioc.Register<IRoomAccess, RoomAccess>().AsDelegate(InProcFactory.CreateInstance<RoomAccess, IRoomAccess>);
+            _ioc.Register<IRoomAccess, RoomAccess>().AsDelegate(InProcFactory.CreateInstance<RoomAccess, IRoomAccess>);
         }
 
         public ReservingEngine(InterfaceResolver resolver) {
-            Ioc = resolver;
+            _ioc = resolver;
         }
 
         #region Implementation of IReservingEngine
@@ -40,7 +40,7 @@ namespace HotelCorp.HotelApp.Services.Engines {
         public Room PerformAutoCheckin(Guest newGuest) {
             Room bestRoom = null;
             using (var transaction = new TransactionScope()) {
-                using (var roomAccess = Ioc.Resolve<IRoomAccess>()) {
+                using (var roomAccess = _ioc.Resolve<IRoomAccess>()) {
                     List<Room> emptyList = roomAccess.GetAllEmptyRooms();
                     if (emptyList.Count <= 0) {
                         throw new Exception("No vacancy, cannot checkin guest");
@@ -64,6 +64,9 @@ namespace HotelCorp.HotelApp.Services.Engines {
             double maxDistance = 0;
             Room bestRoom = null;
             foreach (Room emptyRoom in roomList) {
+                if (bestRoom == null) {
+                    bestRoom = emptyRoom;
+                }
                 foreach (Room emptyRoom2 in roomList) {
                     double dist = FindDistanceBetweenRooms(emptyRoom, emptyRoom2);
                     if (dist > maxDistance) {

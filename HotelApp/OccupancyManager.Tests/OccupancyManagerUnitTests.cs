@@ -17,8 +17,6 @@ namespace HotelCorp.HotelApp.Services.Managers.Tests {
     public class OccupancyManagerUnitTests {
         [ClassInitialize]
         public static void ClassInit(TestContext context) {
-            using (var x = InProcFactory.CreateInstance<RoomAccess, IRoomAccess>() ) {}
-            using (var x = InProcFactory.CreateInstance<RoomAccess, IRoomAccess>()) { }
         }
 
         [TestMethod]
@@ -34,12 +32,11 @@ namespace HotelCorp.HotelApp.Services.Managers.Tests {
 
         [TestMethod]
         public void GenerateBasicHotel_2x3x2() {
-            // TODO: make unit test rather than service test
             // Arrange
-            //var resolver = new InterfaceResolver();
-            //resolver.Register<IRoomAccess, MockRoomAccess>();
-            //var manager = new OccupancyManager_Wpf(resolver);
-            var manager = new OccupancyManager_Wpf();
+            var resolver = new InterfaceResolver();
+            resolver.Register<IRoomAccess, RoomAccess>();
+
+            var manager = new OccupancyManager_Wpf(resolver);
 
             // Act
             manager.GenerateBasicHotel(2, 3, 2);

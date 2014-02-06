@@ -12,7 +12,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using HelixToolkit.Wpf;
 
-namespace WpfApplication1
+namespace HotelCorp.HotelApp
 {
     public class MainViewModel : INotifyPropertyChanged
     {

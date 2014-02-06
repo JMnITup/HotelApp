@@ -6,9 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
@@ -16,11 +14,10 @@ using HotelCorp.HotelApp.Services.Access;
 using HotelCorp.HotelApp.Services.Engines;
 using HotelCorp.HotelApp.Services.Managers;
 using JamesMeyer.IocContainer;
-using ServiceModelEx.Hosting;
 using Guest = HotelCorp.HotelApp.Services.Managers.Guest;
 using Room = HotelCorp.HotelApp.Services.Managers.Room;
 
-namespace WpfApplication1
+namespace HotelCorp.HotelApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

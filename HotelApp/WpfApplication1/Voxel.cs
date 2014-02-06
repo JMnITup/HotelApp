@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Xml.Serialization;
 
-namespace WpfApplication1
+namespace HotelCorp.HotelApp
 {
     public class Voxel
     {

@@ -40,17 +40,18 @@ namespace HotelCorp.HotelApp.Services.Access {
             return HotelMap.ConvertAll(n => n.RoomNumber);
         }
 
-        public void AssignGuestToRoom(Guest guest, string roomNumber) {
+        public Room AssignGuestToRoom(Guest guest, string roomNumber) {
             VerifyGuest(guest);
             Room room = GetRoomByRoomNumber(roomNumber);
             room.Guest = guest;
+            return room;
         }
 
         public void UnassignGuestFromRoom(Guest guest, string roomNumber) {
             VerifyGuest(guest);
             Room room = GetRoomByRoomNumber(roomNumber);
             if (!IsSpecifiedGuestInRoom(guest, room)) {
-                throw new Exception("Guest is not checked into room");
+                throw new FaultException("Guest is not checked into room");
             }
             room.Guest = null;
         }
@@ -81,20 +82,20 @@ namespace HotelCorp.HotelApp.Services.Access {
         protected Room GetRoomByRoomNumber(string roomNumber) {
             List<Room> rooms = HotelMap.FindAll(room => room.RoomNumber == roomNumber);
             if (rooms.Count < 1) {
-                throw new Exception("Requested room does not exist");
+                throw new FaultException("Requested room does not exist");
             }
             if (rooms.Count > 1) {
-                throw new Exception("There are multiple rooms with that number, cannot proceed");
+                throw new FaultException("There are multiple rooms with that number, cannot proceed");
             }
             return rooms[0];
         }
 
         protected void VerifyGuest(Guest guest) {
             if (guest == null) {
-                throw new Exception("No guest provided");
+                throw new FaultException("No guest provided");
             }
             if (guest.FirstName.Trim() == "" && guest.LastName.Trim() == "") {
-                throw new Exception("Guests must have a name");
+                throw new FaultException("Guests must have a name");
             }
         }
 

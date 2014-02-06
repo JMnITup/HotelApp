@@ -34,16 +34,21 @@ namespace HotelCorp.HotelApp.Services.Managers {
             return GetAllRooms();
         }
 
-        public void CheckinGuest(Guest guest, string roomNumber = null) {
+        public Room CheckinGuest(Guest guest, string roomNumber = null) {
             if (roomNumber == null) {
                 using (var reservingEngine = _ioc.Resolve<IReservingEngine>()) {
-                    var room = reservingEngine.PerformAutoCheckin(Repackage.Guest(guest));
+                    return Repackage.Room(reservingEngine.PerformAutoCheckin(Repackage.Guest(guest)));
                 }
             }
+            return null;
         }
 
         public void CheckoutGuest(Guest guest, string roomNumber) {
-            throw new NotImplementedException();
+            if (roomNumber != null) {
+                using (var roomAccess = _ioc.Resolve<IRoomAccess>()) {
+                    roomAccess.UnassignGuestFromRoom(Repackage.Guest(guest), roomNumber);
+                }
+            }
         }
 
         public void FindGuest(string firstName, string lastName) {

@@ -11,6 +11,7 @@ using System.Windows.Media.Media3D;
 using System.Xml;
 using System.Xml.Serialization;
 using HelixToolkit.Wpf;
+using HotelCorp.HotelApp.Services.Managers;
 
 namespace HotelCorp.HotelApp
 {
@@ -134,21 +135,25 @@ namespace HotelCorp.HotelApp
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="normal">The normal.</param>
-        public void Add(Model3D source, Vector3D normal)
+        /// <param name="guest"></param>
+        /// <param name="roomNumber"></param>
+        public void Add(Model3D source, Vector3D normal, Guest guest, string roomNumber)
         {
             if (!ModelToVoxel.ContainsKey(source))
                 return;
             var v = ModelToVoxel[source];
-            AddVoxel(v.Position + normal);
+            AddVoxel(v.Position + normal, guest: guest, roomNumber: roomNumber);
         }
 
         /// <summary>
         /// Adds a voxel at the specified position.
         /// </summary>
         /// <param name="p">The p.</param>
-        public void AddVoxel(Point3D p, double scale = 1.00)
-        {
-            Voxels.Add(new Voxel(p, CurrentColor, scale));
+        /// <param name="scale"></param>
+        /// <param name="guest"></param>
+        /// <param name="roomNumber"></param>
+        public void AddVoxel(Point3D p, double scale = 1.00, Guest guest = null, string roomNumber = "") {
+            Voxels.Add(new Voxel(p, CurrentColor, scale, guest, roomNumber));
             UpdateModel();
         }
 
@@ -166,9 +171,17 @@ namespace HotelCorp.HotelApp
                 var om = OriginalMaterial[m];
 
                 // highlight color
-                var hc = Color.FromArgb(0x80, v.Colour.R, v.Colour.G, v.Colour.B);
+                var hc = Color.FromArgb(0x80, (byte)(v.Colour.R+100), v.Colour.G, v.Colour.B);
                 m.Material = m == model ? MaterialHelper.CreateMaterial(hc) : om;
+                
             }
+        }
+
+        public Voxel GetVoxel(Model3D source) {
+            if (source == null || !ModelToVoxel.ContainsKey(source))
+                return null;
+            var v = ModelToVoxel[source];
+            return v;
         }
 
         /// <summary>
@@ -207,5 +220,6 @@ namespace HotelCorp.HotelApp
             Voxels.Clear();
             UpdateModel();
         }
+
     }
 }

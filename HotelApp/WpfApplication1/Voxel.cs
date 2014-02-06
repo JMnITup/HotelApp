@@ -8,6 +8,7 @@ using System;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Xml.Serialization;
+using HotelCorp.HotelApp.Services.Managers;
 
 namespace HotelCorp.HotelApp
 {
@@ -45,16 +46,26 @@ namespace HotelCorp.HotelApp
         
         [XmlIgnore]
         public double Scale { get; set; }
+        
+        [XmlIgnore]
+        public HotelCorp.HotelApp.Services.Managers.Guest Guest { get; set; }
+
+
+        [XmlIgnore]
+        public string RoomNumber { get; set; }
+
 
         public Voxel()
         {
         }
 
-        public Voxel(Point3D position, Color colour, double scale = 1.00)
+        public Voxel(Point3D position, Color colour, double scale = 1.00, Guest guest = null, string roomNumber = null)
         {
             Position = position;
             Colour = colour;
             Scale = scale;
+            Guest = guest;
+            RoomNumber = roomNumber;
         }
     }
 }

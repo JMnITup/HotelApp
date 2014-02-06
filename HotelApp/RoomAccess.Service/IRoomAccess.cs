@@ -16,7 +16,7 @@ namespace HotelCorp.HotelApp.Services.Access {
         List<string> GetRoomNumbers();
 
         [OperationContract]
-        void AssignGuestToRoom(Guest guest, string roomNumber);
+        Room AssignGuestToRoom(Guest guest, string roomNumber);
 
         [OperationContract]
         void UnassignGuestFromRoom(Guest guest, string roomNumber);

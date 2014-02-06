@@ -47,7 +47,7 @@ namespace HotelCorp.HotelApp
 
         protected override void OnClosed(EventArgs e)
         {
-            vm.Save("MyModel.xml");
+            //vm.Save("MyModel.xml");
             base.OnClosed(e);
         }
 
@@ -86,6 +86,18 @@ namespace HotelCorp.HotelApp
 
         private void view1_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            var p = Mouse.GetPosition(view1);
+            Vector3D n;
+            var source = FindSource(p, out n);
+            var hoverVoxel = vm.GetVoxel(source);
+            if (hoverVoxel != null && hoverVoxel.Guest != null) {
+                using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
+                    svc.CheckoutGuest(hoverVoxel.Guest, hoverVoxel.RoomNumber);
+                    RebuildMap();
+                    tbInformation.Text = "Guest " + hoverVoxel.Guest.FirstName + " " + hoverVoxel.Guest.LastName + " checked out of room " +
+                                             hoverVoxel.RoomNumber;
+                }
+            }
             /*bool shift = (Keyboard.IsKeyDown(Key.LeftShift));
             var p = e.GetPosition(view1);
 
@@ -132,6 +144,16 @@ namespace HotelCorp.HotelApp
             //{
                 vm.PreviewVoxel(null);
                 vm.HighlightVoxel(source);
+                var hoverVoxel = vm.GetVoxel(source);
+                if (hoverVoxel != null) {
+                    lblRoomDetails.Content = "Room: " + hoverVoxel.RoomNumber;
+                    if (hoverVoxel.Guest != null) {
+                        lblRoomDetails.Content += "  Guest: " + hoverVoxel.Guest.FirstName + " " + hoverVoxel.Guest.LastName;
+                    }
+                } else {
+                    lblRoomDetails.Content = "";
+                }
+
             //}
             //else
             //{
@@ -143,7 +165,7 @@ namespace HotelCorp.HotelApp
 
         private void view1_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            //  ReleaseMouseCapture();
+            // ReleaseMouseCapture();
         }
 
         private void view1_KeyUp(object sender, KeyEventArgs e)
@@ -175,15 +197,23 @@ namespace HotelCorp.HotelApp
         private void CheckinGuest(object sender, RoutedEventArgs e) {
 
             using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
-                // TODO: update this
-                Guest guest = new Guest("Bob", "Marley");
+                Guest guest = new Guest(txtFirstName.Text, txtLastName.Text);
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+                Room room = null;
                 try {
-                    svc.CheckinGuest(guest);
+                    room = svc.CheckinGuest(guest);
                 } catch (FaultException ex) {
                     System.Windows.MessageBox.Show(ex.Message);
                 }
+                RebuildMap();
+                if (room != null) {
+                    tbInformation.Text = "Guest " + room.Guest.FirstName + " " + room.Guest.LastName + " checked into room " + room.RoomNumber;
+                } else {
+                    tbInformation.Text = "";
+                }
             }
-            RebuildMap();
+
         }
 
         private void RebuildMap(List<Room> roomList = null ) {
@@ -196,9 +226,10 @@ namespace HotelCorp.HotelApp
             vm.Clear();
             roomList.ForEach(room => {
                                     double scale = room.Guest == null ? 0.2 : 1;
-                                    vm.AddVoxel(room.Location, scale);
+                                    vm.AddVoxel(room.Location, scale, room.Guest, room.RoomNumber);
                                 });
             UpdatePreview();
+            tbInformation.Text = "";
         }
 
     }

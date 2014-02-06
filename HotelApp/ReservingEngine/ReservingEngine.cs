@@ -55,7 +55,7 @@ namespace HotelCorp.HotelApp.Services.Engines {
                         bestRoom = GetFurthestEmptyRoom(emptyList, filledList);
                     }
 
-                    roomAccess.AssignGuestToRoom(newGuest, bestRoom.RoomNumber);
+                    return roomAccess.AssignGuestToRoom(newGuest, bestRoom.RoomNumber);
                 }
             }
             return bestRoom;

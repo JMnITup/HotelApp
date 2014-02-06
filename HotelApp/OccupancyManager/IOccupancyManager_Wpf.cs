@@ -15,7 +15,7 @@ namespace HotelCorp.HotelApp.Services.Managers {
         List<Room> GenerateBasicHotel(uint roomCountHorizontal, uint roomCountDepth, uint roomCountVerticle);
 
         [OperationContract]
-        void CheckinGuest(Guest guest, string roomNumber = null);
+        Room CheckinGuest(Guest guest, string roomNumber = null);
 
         [OperationContract]
         void CheckoutGuest(Guest guest, string roomNumber);

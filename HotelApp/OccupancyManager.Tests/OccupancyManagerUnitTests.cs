@@ -2,22 +2,18 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Media.Media3D;
 using HotelCorp.HotelApp.Services.Access;
 using JamesMeyer.IocContainer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ServiceModelEx.Hosting;
 
 #endregion
 
 namespace HotelCorp.HotelApp.Services.Managers.Tests {
-    
     [TestClass]
     public class OccupancyManagerUnitTests {
         [ClassInitialize]
-        public static void ClassInit(TestContext context) {
-        }
+        public static void ClassInit(TestContext context) {}
 
         [TestMethod]
         public void InstantiateOccupancyManager_Wcf() {
@@ -42,7 +38,7 @@ namespace HotelCorp.HotelApp.Services.Managers.Tests {
             manager.GenerateBasicHotel(2, 3, 2);
 
             // Assert
-            var rooms = manager.GetAllRooms();
+            List<Room> rooms = manager.GetAllRooms();
             Assert.AreEqual(2*3*2, rooms.Count);
         }
     }
@@ -65,10 +61,6 @@ namespace HotelCorp.HotelApp.Services.Managers.Tests {
             throw new NotImplementedException();
         }
 
-        public void AssignGuestToRoom(Access.Guest guest, string roomNumber) {
-            throw new NotImplementedException();
-        }
-
         public void UnassignGuestFromRoom(Access.Guest guest, string roomNumber) {
             throw new NotImplementedException();
         }
@@ -88,10 +80,14 @@ namespace HotelCorp.HotelApp.Services.Managers.Tests {
         public List<Access.Room> GetRoomList() {
             return new List<Access.Room>
                        {
-                           new Access.Room("1-1-1", new Point3D(1, 1, 1)), 
+                           new Access.Room("1-1-1", new Point3D(1, 1, 1)),
                            new Access.Room("1-1-2", new Point3D(1, 1, 2)),
                            new Access.Room("2-1-1", new Point3D(2, 1, 1))
                        };
+        }
+
+        public void AssignGuestToRoom(Access.Guest guest, string roomNumber) {
+            throw new NotImplementedException();
         }
 
         #endregion

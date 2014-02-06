@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿#region
+
+using System.Collections.Generic;
 using System.Linq;
+
+#endregion
 
 namespace HotelCorp.HotelApp.Services.Managers {
     public class Repackage {
-
         public static Room Room(Access.Room from) {
             if (@from == null) {
                 return null;

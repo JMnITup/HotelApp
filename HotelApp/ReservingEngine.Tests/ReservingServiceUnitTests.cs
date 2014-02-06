@@ -255,10 +255,6 @@ namespace HotelCorp.HotelApp.Services.Engines.Tests {
                 throw new NotImplementedException();
             }
 
-            public void AssignGuestToRoom(Guest guest, string roomNumber) {
-                throw new NotImplementedException();
-            }
-
             public void UnassignGuestFromRoom(Guest guest, string roomNumber) {
                 throw new NotImplementedException();
             }
@@ -281,6 +277,10 @@ namespace HotelCorp.HotelApp.Services.Engines.Tests {
             }
 
             public List<Room> GetRoomList() {
+                throw new NotImplementedException();
+            }
+
+            public void AssignGuestToRoom(Guest guest, string roomNumber) {
                 throw new NotImplementedException();
             }
 

@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿#region
 
-namespace HotelCorp.HotelApp
-{
+using System.Windows;
+
+#endregion
+
+namespace HotelCorp.HotelApp {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
-    {
-    }
+    public partial class App : Application {}
 }

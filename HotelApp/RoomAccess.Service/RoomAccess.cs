@@ -1,8 +1,6 @@
 ﻿#region
 
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.ServiceModel;
 using System.Windows.Media.Media3D;
 using JamesMeyer.IocContainer;

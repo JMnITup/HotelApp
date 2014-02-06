@@ -4,6 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+#region
+
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -11,51 +13,43 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
-using HotelCorp.HotelApp.Services.Access;
-using HotelCorp.HotelApp.Services.Engines;
 using HotelCorp.HotelApp.Services.Managers;
 using JamesMeyer.IocContainer;
 using ServiceModelEx.Hosting;
-using Guest = HotelCorp.HotelApp.Services.Managers.Guest;
-using Room = HotelCorp.HotelApp.Services.Managers.Room;
 
-namespace HotelCorp.HotelApp
-{
+#endregion
+
+namespace HotelCorp.HotelApp {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
+        private readonly InterfaceResolver resolver = new InterfaceResolver();
         private readonly MainViewModel vm = new MainViewModel();
-        private InterfaceResolver resolver = new InterfaceResolver();
 
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
 
-            resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>().AsDelegate(InProcFactory.CreateInstance<OccupancyManager_Wpf, IOccupancyManager_Wpf>);
-            
+            resolver.Register<IOccupancyManager_Wpf, OccupancyManager_Wpf>()
+                    .AsDelegate(InProcFactory.CreateInstance<OccupancyManager_Wpf, IOccupancyManager_Wpf>);
+
             DataContext = vm;
-            Loaded += new RoutedEventHandler(MainWindow_Loaded);
+            Loaded += MainWindow_Loaded;
         }
 
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
             view1.ZoomExtents(500);
             view1.Focus();
         }
 
-        protected override void OnClosed(EventArgs e)
-        {
+        protected override void OnClosed(EventArgs e) {
             //vm.Save("MyModel.xml");
             base.OnClosed(e);
         }
 
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
+        protected override void OnKeyDown(KeyEventArgs e) {
             base.OnKeyDown(e);
-            switch (e.Key)
-            {
+            switch (e.Key) {
                 case Key.Space:
                     vm.PaletteIndex++;
                     vm.CurrentColor = vm.GetPaletteColor();
@@ -69,14 +63,13 @@ namespace HotelCorp.HotelApp
             }
         }
 
-        Model3D FindSource(Point p, out Vector3D normal)
-        {
-            var hits = Viewport3DHelper.FindHits(view1.Viewport, p);
+        private Model3D FindSource(Point p, out Vector3D normal) {
+            IList<Viewport3DHelper.HitResult> hits = view1.Viewport.FindHits(p);
 
-            foreach (var h in hits)
-            {
-                if (h.Model == vm.PreviewModel)
+            foreach (Viewport3DHelper.HitResult h in hits) {
+                if (h.Model == vm.PreviewModel) {
                     continue;
+                }
                 normal = h.Normal;
                 return h.Model;
             }
@@ -84,18 +77,17 @@ namespace HotelCorp.HotelApp
             return null;
         }
 
-        private void view1_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var p = Mouse.GetPosition(view1);
+        private void view1_MouseDown(object sender, MouseButtonEventArgs e) {
+            Point p = Mouse.GetPosition(view1);
             Vector3D n;
-            var source = FindSource(p, out n);
-            var hoverVoxel = vm.GetVoxel(source);
+            Model3D source = FindSource(p, out n);
+            Voxel hoverVoxel = vm.GetVoxel(source);
             if (hoverVoxel != null && hoverVoxel.Guest != null) {
                 using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                     svc.CheckoutGuest(hoverVoxel.Guest, hoverVoxel.RoomNumber);
                     RebuildMap();
                     tbInformation.Text = "Guest " + hoverVoxel.Guest.FirstName + " " + hoverVoxel.Guest.LastName + " checked out of room " +
-                                             hoverVoxel.RoomNumber;
+                                         hoverVoxel.RoomNumber;
                 }
             }
             /*bool shift = (Keyboard.IsKeyDown(Key.LeftShift));
@@ -129,30 +121,28 @@ namespace HotelCorp.HotelApp
             //CaptureMouse();*/
         }
 
-        private void view1_MouseMove(object sender, MouseEventArgs e)
-        {
+        private void view1_MouseMove(object sender, MouseEventArgs e) {
             UpdatePreview();
         }
 
-        void UpdatePreview()
-        {
-            var p = Mouse.GetPosition(view1);
+        private void UpdatePreview() {
+            Point p = Mouse.GetPosition(view1);
             bool shift = (Keyboard.IsKeyDown(Key.LeftShift));
             Vector3D n;
-            var source = FindSource(p, out n);
+            Model3D source = FindSource(p, out n);
             //if (shift)
             //{
-                vm.PreviewVoxel(null);
-                vm.HighlightVoxel(source);
-                var hoverVoxel = vm.GetVoxel(source);
-                if (hoverVoxel != null) {
-                    lblRoomDetails.Content = "Room: " + hoverVoxel.RoomNumber;
-                    if (hoverVoxel.Guest != null) {
-                        lblRoomDetails.Content += "  Guest: " + hoverVoxel.Guest.FirstName + " " + hoverVoxel.Guest.LastName;
-                    }
-                } else {
-                    lblRoomDetails.Content = "";
+            vm.PreviewVoxel(null);
+            vm.HighlightVoxel(source);
+            Voxel hoverVoxel = vm.GetVoxel(source);
+            if (hoverVoxel != null) {
+                lblRoomDetails.Content = "Room: " + hoverVoxel.RoomNumber;
+                if (hoverVoxel.Guest != null) {
+                    lblRoomDetails.Content += "  Guest: " + hoverVoxel.Guest.FirstName + " " + hoverVoxel.Guest.LastName;
                 }
+            } else {
+                lblRoomDetails.Content = "";
+            }
 
             //}
             //else
@@ -160,51 +150,45 @@ namespace HotelCorp.HotelApp
             //    vm.PreviewVoxel(source, n);
             //    vm.HighlightVoxel(null);
             //}
-
         }
 
-        private void view1_MouseUp(object sender, MouseButtonEventArgs e)
-        {
+        private void view1_MouseUp(object sender, MouseButtonEventArgs e) {
             // ReleaseMouseCapture();
         }
 
-        private void view1_KeyUp(object sender, KeyEventArgs e)
-        {
+        private void view1_KeyUp(object sender, KeyEventArgs e) {
             // Should update preview voxel when shift is released
             UpdatePreview();
         }
 
-        private void view1_KeyDown(object sender, KeyEventArgs e)
-        {
+        private void view1_KeyDown(object sender, KeyEventArgs e) {
             // Should update preview voxel when shift is pressed
             UpdatePreview();
         }
 
         private void GenerateNewHotel(object sender, RoutedEventArgs e) {
-
             using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                 uint x, y, z;
                 x = UInt32.Parse(GenX.Text);
                 y = UInt32.Parse(GenY.Text);
                 z = UInt32.Parse(GenZ.Text);
-                var hotelMap = svc.GenerateBasicHotel(x, y, z);
+                List<Room> hotelMap = svc.GenerateBasicHotel(x, y, z);
                 RebuildMap(hotelMap);
             }
             CheckinBtn.IsEnabled = true;
             UpdatePreview();
         }
-        
-        private void CheckinGuest(object sender, RoutedEventArgs e) {
 
+        private void CheckinGuest(object sender, RoutedEventArgs e) {
             using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
-                Guest guest = new Guest(txtFirstName.Text, txtLastName.Text);
+                var guest = new Guest(txtFirstName.Text, txtLastName.Text);
                 txtFirstName.Text = "";
                 txtLastName.Text = "";
                 Room room = null;
                 try {
                     room = svc.CheckinGuest(guest);
                 } catch (FaultException ex) {
-                    System.Windows.MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
                 RebuildMap();
                 if (room != null) {
@@ -213,24 +197,22 @@ namespace HotelCorp.HotelApp
                     tbInformation.Text = "";
                 }
             }
-
         }
 
-        private void RebuildMap(List<Room> roomList = null ) {
+        private void RebuildMap(List<Room> roomList = null) {
             if (roomList == null) {
-
                 using (var svc = resolver.Resolve<IOccupancyManager_Wpf>()) {
                     roomList = svc.GetAllRooms();
                 }
             }
             vm.Clear();
-            roomList.ForEach(room => {
-                                    double scale = room.Guest == null ? 0.2 : 1;
-                                    vm.AddVoxel(room.Location, scale, room.Guest, room.RoomNumber);
-                                });
+            roomList.ForEach(room =>
+                                 {
+                                     double scale = room.Guest == null ? 0.2 : 1;
+                                     vm.AddVoxel(room.Location, scale, room.Guest, room.RoomNumber);
+                                 });
             UpdatePreview();
             tbInformation.Text = "";
         }
-
     }
 }

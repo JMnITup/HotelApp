@@ -4,34 +4,45 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+#region
+
 using System;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Xml.Serialization;
 using HotelCorp.HotelApp.Services.Managers;
 
-namespace HotelCorp.HotelApp
-{
-    public class Voxel
-    {
+#endregion
+
+namespace HotelCorp.HotelApp {
+    public class Voxel {
+        public Voxel() {}
+
+        public Voxel(Point3D position, Color colour, double scale = 1.00, Guest guest = null, string roomNumber = null) {
+            Position = position;
+            Colour = colour;
+            Scale = scale;
+            Guest = guest;
+            RoomNumber = roomNumber;
+        }
+
         [XmlAttribute("Position")]
-        public string XmlPosition
-        {
+        public string XmlPosition {
             get { return Position.ToString(); }
-            set { Position = Point3D.Parse(value.Replace(';',',')); }
+            set { Position = Point3D.Parse(value.Replace(';', ',')); }
         }
 
         [XmlAttribute("Colour")]
-        public string XmlColour
-        {
+        public string XmlColour {
             get { return Colour.ToString(); }
-            set
-            {
-                var obj = ColorConverter.ConvertFromString(value);
-                if (obj != null) Colour = (Color)obj;
+            set {
+                object obj = ColorConverter.ConvertFromString(value);
+                if (obj != null) {
+                    Colour = (Color) obj;
+                }
             }
         }
-        
+
         [XmlAttribute("Scale")]
         public string XmlScale {
             get { return Scale.ToString(); }
@@ -43,29 +54,14 @@ namespace HotelCorp.HotelApp
 
         [XmlIgnore]
         public Color Colour { get; set; }
-        
+
         [XmlIgnore]
         public double Scale { get; set; }
-        
-        [XmlIgnore]
-        public HotelCorp.HotelApp.Services.Managers.Guest Guest { get; set; }
 
+        [XmlIgnore]
+        public Guest Guest { get; set; }
 
         [XmlIgnore]
         public string RoomNumber { get; set; }
-
-
-        public Voxel()
-        {
-        }
-
-        public Voxel(Point3D position, Color colour, double scale = 1.00, Guest guest = null, string roomNumber = null)
-        {
-            Position = position;
-            Colour = colour;
-            Scale = scale;
-            Guest = guest;
-            RoomNumber = roomNumber;
-        }
     }
 }

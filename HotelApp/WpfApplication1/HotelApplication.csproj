@@ -65,7 +65,7 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Voxel.cs" />
+    <Compile Include="RoomVoxel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -100,12 +100,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MyModel.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Voxel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\IocContainer\IocContainer.csproj">
       <Project>{89E3A50F-A4BC-4D0B-8A3B-1E22C80799EF}</Project>

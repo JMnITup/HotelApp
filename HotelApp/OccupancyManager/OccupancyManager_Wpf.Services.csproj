@@ -64,9 +64,6 @@
     <Compile Include="Repackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\IocContainer\IocContainer.csproj">
       <Project>{89E3A50F-A4BC-4D0B-8A3B-1E22C80799EF}</Project>
       <Name>IocContainer</Name>

@@ -1,10 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainViewModel.cs" company="Helix 3D Toolkit">
-//   http://helixtoolkit.codeplex.com, license: MIT
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-#region
+﻿#region
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,8 +13,6 @@ using HotelCorp.HotelApp.Services.Managers;
 
 namespace HotelCorp.HotelApp {
     public class MainViewModel : INotifyPropertyChanged {
-        // Inspired by: http://mrdoob.com/130/Voxels_HTML5
-
         private readonly Color[] palette = new[]
                                                {
                                                    Colors.SeaGreen,
@@ -39,24 +31,23 @@ namespace HotelCorp.HotelApp {
                                                    Colors.DarkOrchid
                                                };
 
-        private readonly XmlSerializer serializer = new XmlSerializer(typeof(List<Voxel>), new[] {typeof(Voxel)});
+        private readonly XmlSerializer serializer = new XmlSerializer(typeof(List<RoomVoxel>), new[] {typeof(RoomVoxel)});
 
         public MainViewModel() {
             CurrentColor = GetPaletteColor();
             Model = new Model3DGroup();
-            Voxels = new List<Voxel>();
+            Voxels = new List<RoomVoxel>();
             Highlighted = new List<Model3D>();
-            ModelToVoxel = new Dictionary<Model3D, Voxel>();
+            ModelToVoxel = new Dictionary<Model3D, RoomVoxel>();
             OriginalMaterial = new Dictionary<Model3D, Material>();
-            //Voxels.Add(new Voxel(new Point3D(0, 0, 0), CurrentColor));
             UpdateModel();
         }
 
-        public List<Voxel> Voxels { get; set; }
+        public List<RoomVoxel> Voxels { get; set; }
         public Color CurrentColor { get; set; }
         public Model3DGroup Model { get; set; }
 
-        public Dictionary<Model3D, Voxel> ModelToVoxel { get; private set; }
+        public Dictionary<Model3D, RoomVoxel> ModelToVoxel { get; private set; }
         public Dictionary<Model3D, Material> OriginalMaterial { get; private set; }
 
         public List<Model3D> Highlighted { get; set; }
@@ -75,7 +66,7 @@ namespace HotelCorp.HotelApp {
             try {
                 using (XmlReader r = XmlReader.Create(fileName)) {
                     object v = serializer.Deserialize(r);
-                    Voxels = v as List<Voxel>;
+                    Voxels = v as List<RoomVoxel>;
                 }
                 UpdateModel();
                 return true;
@@ -92,7 +83,7 @@ namespace HotelCorp.HotelApp {
             Model.Children.Clear();
             ModelToVoxel.Clear();
             OriginalMaterial.Clear();
-            foreach (Voxel v in Voxels) {
+            foreach (RoomVoxel v in Voxels) {
                 GeometryModel3D m = CreateVoxelModel3D(v);
                 OriginalMaterial.Add(m, m.Material);
                 Model.Children.Add(m);
@@ -101,13 +92,13 @@ namespace HotelCorp.HotelApp {
             RaisePropertyChanged("Model");
         }
 
-        private static GeometryModel3D CreateVoxelModel3D(Voxel v) {
+        private static GeometryModel3D CreateVoxelModel3D(RoomVoxel v) {
             double size = 0.98*v.Scale;
             var m = new GeometryModel3D();
             var mb = new MeshBuilder();
             mb.AddBox(new Point3D(0, 0, 0), size, size, size);
             m.Geometry = mb.ToMesh();
-            m.Material = MaterialHelper.CreateMaterial(v.Colour, v.Scale*.5);
+            m.Material = MaterialHelper.CreateMaterial(v.Colour, v.Scale*.7);
             m.Transform = new TranslateTransform3D(v.Position.X, v.Position.Y, v.Position.Z);
             return m;
         }
@@ -130,7 +121,7 @@ namespace HotelCorp.HotelApp {
             if (!ModelToVoxel.ContainsKey(source)) {
                 return;
             }
-            Voxel v = ModelToVoxel[source];
+            RoomVoxel v = ModelToVoxel[source];
             AddVoxel(v.Position + normal, guest: guest, roomNumber: roomNumber);
         }
 
@@ -142,7 +133,7 @@ namespace HotelCorp.HotelApp {
         /// <param name="guest"></param>
         /// <param name="roomNumber"></param>
         public void AddVoxel(Point3D p, double scale = 1.00, Guest guest = null, string roomNumber = "") {
-            Voxels.Add(new Voxel(p, CurrentColor, scale, guest, roomNumber));
+            Voxels.Add(new RoomVoxel(p, CurrentColor, scale, guest, roomNumber));
             UpdateModel();
         }
 
@@ -155,20 +146,20 @@ namespace HotelCorp.HotelApp {
                 if (!ModelToVoxel.ContainsKey(m)) {
                     continue;
                 }
-                Voxel v = ModelToVoxel[m];
+                RoomVoxel v = ModelToVoxel[m];
                 Material om = OriginalMaterial[m];
 
                 // highlight color
-                Color hc = Color.FromArgb(0x80, (byte) (v.Colour.R + 100), v.Colour.G, v.Colour.B);
+                Color hc = Color.FromArgb(0x90, (byte) (v.Colour.R + 100), v.Colour.G, v.Colour.B);
                 m.Material = m == model ? MaterialHelper.CreateMaterial(hc) : om;
             }
         }
 
-        public Voxel GetVoxel(Model3D source) {
+        public RoomVoxel GetVoxel(Model3D source) {
             if (source == null || !ModelToVoxel.ContainsKey(source)) {
                 return null;
             }
-            Voxel v = ModelToVoxel[source];
+            RoomVoxel v = ModelToVoxel[source];
             return v;
         }
 
@@ -189,9 +180,9 @@ namespace HotelCorp.HotelApp {
             if (!ModelToVoxel.ContainsKey(source)) {
                 return;
             }
-            Voxel v = ModelToVoxel[source];
+            RoomVoxel v = ModelToVoxel[source];
             Color previewColor = Color.FromArgb(0x80, CurrentColor.R, CurrentColor.G, CurrentColor.B);
-            var pv = new Voxel(v.Position + normal, previewColor);
+            var pv = new RoomVoxel(v.Position + normal, previewColor);
             PreviewModel = CreateVoxelModel3D(pv);
             Model.Children.Add(PreviewModel);
         }
@@ -200,7 +191,7 @@ namespace HotelCorp.HotelApp {
             if (!ModelToVoxel.ContainsKey(model)) {
                 return;
             }
-            Voxel v = ModelToVoxel[model];
+            RoomVoxel v = ModelToVoxel[model];
             Voxels.Remove(v);
             UpdateModel();
         }

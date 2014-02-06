@@ -1,9 +1,3 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Voxel.cs" company="Helix 3D Toolkit">
-//   http://helixtoolkit.codeplex.com, license: MIT
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
 #region
 
 using System;
@@ -15,10 +9,10 @@ using HotelCorp.HotelApp.Services.Managers;
 #endregion
 
 namespace HotelCorp.HotelApp {
-    public class Voxel {
-        public Voxel() {}
+    public class RoomVoxel {
+        public RoomVoxel() {}
 
-        public Voxel(Point3D position, Color colour, double scale = 1.00, Guest guest = null, string roomNumber = null) {
+        public RoomVoxel(Point3D position, Color colour, double scale = 1.00, Guest guest = null, string roomNumber = null) {
             Position = position;
             Colour = colour;
             Scale = scale;
